@@ -1,6 +1,6 @@
 package model;
 
-public class Vendedor {
+public class Vendedor implements Comparable<Vendedor>{
     private int idVendedor;
     private int totalVendas;
     private String nomeVendedor;
@@ -11,6 +11,13 @@ public class Vendedor {
     public Vendedor(int idVendedor, int totalVendas, String nomeVendedor, String cpfVendedor, String telefone, double salario) {
         this.idVendedor = idVendedor;
         this.totalVendas = totalVendas;
+        this.nomeVendedor = nomeVendedor;
+        this.cpfVendedor = cpfVendedor;
+        this.telefone = telefone;
+        this.salario = salario;
+    }
+
+    public Vendedor(String nomeVendedor, String cpfVendedor, String telefone, double salario) {
         this.nomeVendedor = nomeVendedor;
         this.cpfVendedor = cpfVendedor;
         this.telefone = telefone;
@@ -68,5 +75,10 @@ public class Vendedor {
     @Override
     public String toString() {
         return nomeVendedor;
+    }
+
+    @Override
+    public int compareTo(Vendedor vendedor) {
+        return this.cpfVendedor.compareTo(vendedor.cpfVendedor);
     }
 }

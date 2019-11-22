@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class Conection {
     private static final String USUARIO = "admin";
     private static final String SENHA = "admin";
-    private static final String CAMINHO = "jdbc:h2:~/IdeaProjects/UnicornDealership/lib";
+    private static final String CAMINHO = "jdbc:h2:~/IdeaProjects/UnicornDealershipProject/lib/myDb;INIT=runscript from '~/IdeaProjects/UnicornDealershipProject/createTables.sql'";
     private static final String DRIVER = "org.h2.Driver";
     private Connection conection;
 

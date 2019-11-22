@@ -28,7 +28,7 @@ public class RegisterController implements Initializable {
     private ImageView vehicleIcon;
 
     @FXML
-    private JFXTextField kmRodados, placa, anoVeiculo, valorVenda, valorAluguel, modelo, descricao;
+    private JFXTextField kmRodados, placa;
 
     @FXML
     private JFXComboBox<TIPO> cbTipo;
@@ -68,7 +68,7 @@ public class RegisterController implements Initializable {
             int ch = rand.nextInt (letras.length);
             sb.append (letras[ch]);
         }
-
+        sb.append("-");
         for (int i = 0; i < 4; i++) {
             int n = rand.nextInt (numeros.length);
             sb.append (numeros[n]);

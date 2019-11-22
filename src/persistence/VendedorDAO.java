@@ -1,27 +1,33 @@
 package persistence;
 
+import model.Vendedor;
+
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class VendedorDAO {
     private Conection con = new Conection();
 
-    private final String INSERTVENDEDOR = "INSERT INTO VENDEDOR(SALARIO, NOME_VENDEDOR, CPF_VENDEDOR, TEL_VENDEDOR) VALUES (?,?,?,?)";
-    private final String UPDATEVENDEDOR = "UPDATE VENDEDOR SET CPF_VENDEDOR = ? AND NOME_VENDEDOR  = ? WHERE CPF_VENDEDOR = ? ";
+    private final String INSERTVENDEDOR = "INSERT INTO VENDEDOR(NOME_VENDEDOR, CPF_VENDEDOR, TEL_VENDEDOR, SALARIO) VALUES (?,?,?,?)";
+    private final String UPDATEVENDEDOR = "UPDATE VENDEDOR SET CPF_VENDEDOR = OR NOME_VENDEDOR  = ? WHERE CPF_VENDEDOR = ? ";
     private final String DELETEVENDEDOR = "DELETE FROM VENDEDOR WHERE NOME_VENDEDOR = ? OR CPF_VENDEDOR = ?";
     private final String LISTVENDEDOR = "SELECT * FROM VENDEDOR";
 
 
-    public boolean insertVendedor(double salario, String nome, String cpf, String telefone){
+    public boolean insertVendedor(String nome, String cpf, String telefone, double salario){
         try {
             con.conecta();
             PreparedStatement preparaInstrucao;
             preparaInstrucao = con.getConexao().prepareStatement(INSERTVENDEDOR);
 
-            preparaInstrucao.setDouble(1, salario);
-            preparaInstrucao.setString(2, nome.toUpperCase());
-            preparaInstrucao.setString(3, cpf.toUpperCase());
-            preparaInstrucao.setString(4, telefone.toUpperCase());
+            preparaInstrucao.setString(1, nome.toUpperCase());
+            preparaInstrucao.setString(2, cpf.toUpperCase());
+            preparaInstrucao.setString(3, telefone.toUpperCase());
+            preparaInstrucao.setDouble(4, salario);
 
             preparaInstrucao.execute();
 
@@ -33,5 +39,28 @@ public class VendedorDAO {
             return false;
 
         }
+    }
+    public ArrayList<Vendedor> listVendedor() {
+        ArrayList<Vendedor> lista = new ArrayList<>();
+
+        try {
+            con.conecta();
+            Statement preparaInstrucao;
+            preparaInstrucao = con.getConexao().createStatement();
+
+
+            ResultSet rs = preparaInstrucao.executeQuery(LISTVENDEDOR);
+
+            while (rs.next()) {
+                Vendedor v = new Vendedor(rs.getString("NOME_VENDEDOR"), rs.getString("CPF_VENDEDOR"), rs.getString("TEL_VENDEDOR"), rs.getDouble("SALARIO"));
+                lista.add(v);
+            }
+            con.desconecta();
+        } catch (SQLException sqle) {
+            System.out.println(sqle.getMessage());
+        }
+
+        Collections.sort(lista);
+        return lista;
     }
 }

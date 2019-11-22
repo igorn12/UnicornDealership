@@ -12,7 +12,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SellController implements Initializable {
-    private enum opcoes{MOTO, CARRO};
     @FXML
     private void voltar() throws IOException {
         Parent voltar = FXMLLoader.load(getClass().getResource("/view/Inicial.fxml"));

@@ -3,6 +3,7 @@ package controllers;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.fxml.LoadException;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import main.Principal;
@@ -13,9 +14,9 @@ import java.util.ResourceBundle;
 
 public class InicialController implements Initializable {
     @FXML
-    private void register() throws IOException {
-        Parent register = FXMLLoader.load(getClass().getResource("/view/Register.fxml"));
-        Principal.principalStage.setScene(new Scene(register));
+    private void register() throws IOException{
+            Parent register = FXMLLoader.load(getClass().getResource("/view/Register.fxml"));
+            Principal.principalStage.setScene(new Scene(register));
     }
     @FXML
     private void update() throws IOException {

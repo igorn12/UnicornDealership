@@ -32,7 +32,7 @@ public class AddSellerController {
             alert.showAndWait();
         }else{
             double salario = Double.parseDouble(salarioVendedor.getText());
-            vendedorDAO.insertVendedor(salario, nomeVendedor.getText(), cpfVendedor.getText(), telVendedor.getText());
+            vendedorDAO.insertVendedor(nomeVendedor.getText(), cpfVendedor.getText(), telVendedor.getText(), salario);
             labelConfirm.setVisible(true);
         }
     }
