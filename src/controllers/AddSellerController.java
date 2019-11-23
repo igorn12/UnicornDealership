@@ -27,18 +27,29 @@ public class AddSellerController {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Atenção");
             alert.setHeaderText("Os campos obrigatórios estão vazios");
-            alert.setContentText("Os campos obrigatórios estão vazios");
+            alert.setContentText("OS CAMPOS COM * SÃO OBRIGATÓRIOS");
 
             alert.showAndWait();
         }else{
             double salario = Double.parseDouble(salarioVendedor.getText());
             vendedorDAO.insertVendedor(nomeVendedor.getText(), cpfVendedor.getText(), telVendedor.getText(), salario);
             labelConfirm.setVisible(true);
+            limparCampos();
         }
     }
+
+    @FXML
+    public void limparCampos() {
+        nomeVendedor.clear();
+        cpfVendedor.clear();
+        telVendedor.clear();
+        salarioVendedor.clear();
+    }
+
     @FXML
     private void voltar() throws IOException {
-        Parent voltar = FXMLLoader.load(getClass().getResource("/view/Inicial.fxml"));
+        Parent voltar = FXMLLoader.load(getClass().getResource("/view/Sellers.fxml"));
         Principal.principalStage.setScene(new Scene(voltar));
+        SellersController.principal.close();
     }
 }

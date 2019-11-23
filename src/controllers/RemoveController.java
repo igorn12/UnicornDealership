@@ -11,11 +11,17 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class SellController implements Initializable {
+public class RemoveController implements Initializable {
     @FXML
-    private void voltar() throws IOException {
-        Parent voltar = FXMLLoader.load(getClass().getResource("/view/Inicial.fxml"));
+    private void deleteSeller(){
+
+    }
+
+    @FXML
+    private void voltar() throws IOException{
+        Parent voltar = FXMLLoader.load(getClass().getResource("/view/Seller.fxml"));
         Principal.principalStage.setScene(new Scene(voltar));
+        SellersController.principal.close();
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {

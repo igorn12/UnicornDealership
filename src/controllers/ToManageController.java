@@ -11,14 +11,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class RentController implements Initializable {
-
+public class ToManageController implements Initializable {
     @FXML
-    private void voltar()throws IOException {
-        Parent update = FXMLLoader.load(getClass().getResource("/view/Inicial.fxml"));
-        Principal.principalStage.setScene(new Scene(update));
+    private void voltar() throws IOException {
+        Parent voltar = FXMLLoader.load(getClass().getResource("/view/Inicial.fxml"));
+        Principal.principalStage.setScene(new Scene(voltar));
     }
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

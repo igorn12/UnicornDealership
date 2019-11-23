@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="577.0" prefWidth="776.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SellersController">
+   <top>
+      <AnchorPane prefHeight="88.0" prefWidth="776.0" style="-fx-background-color: lightblue;" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="322.0" layoutY="29.0" text="VENDEDORES" textFill="#e10808">
+               <font>
+                  <Font name="Palatino Linotype Bold" size="24.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="40.0" fitWidth="41.0" layoutX="272.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/sellerIcon.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <TableView prefHeight="289.0" prefWidth="771.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn prefWidth="211.0" text="NOME" />
+          <TableColumn prefWidth="204.0" text="CPF" />
+            <TableColumn prefWidth="205.0" text="TELEFONE" />
+            <TableColumn prefWidth="155.0" text="SALARIO" />
+        </columns>
+      </TableView>
+   </center>
+   <bottom>
+      <HBox prefHeight="90.0" prefWidth="776.0" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane prefHeight="90.0" prefWidth="144.0" />
+            <JFXButton onAction="#addSeller" prefHeight="40.0" prefWidth="152.0" style="-fx-background-color: lightgreen;" text="Adicionar Vendedor" />
+            <AnchorPane prefHeight="90.0" prefWidth="19.0" />
+            <JFXButton onAction="#attSeller" prefHeight="40.0" prefWidth="152.0" style="-fx-background-color: yellow;" text="Atualizar Vendedor" />
+            <AnchorPane prefHeight="90.0" prefWidth="19.0" />
+            <JFXButton onAction="#removeSeller" prefHeight="40.0" prefWidth="152.0" style="-fx-background-color: red;" text="Remover Vendedor" textFill="#fcfcfc" />
+            <AnchorPane prefHeight="90.0" prefWidth="139.0">
+               <children>
+                  <JFXButton layoutX="48.0" layoutY="45.0" onAction="#voltar" prefHeight="31.0" prefWidth="74.0" style="-fx-background-color: aquamarine;" text="Voltar" />
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>

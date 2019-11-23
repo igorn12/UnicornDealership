@@ -10,98 +10,111 @@
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="577.0" prefWidth="776.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.InicialController">
-    <top>
-        <AnchorPane prefHeight="88.0" prefWidth="769.0" style="-fx-background-color: lightblue;" BorderPane.alignment="CENTER">
-            <children>
-                <Label layoutX="216.0" layoutY="15.0" prefHeight="58.0" prefWidth="338.0" text="UNICORN         DEALERSHIP" textFill="#e10909">
-                    <font>
-                        <Font name="Palatino Linotype Bold" size="24.0" />
-                    </font>
-                </Label>
-                <ImageView fitHeight="59.0" fitWidth="72.0" layoutX="345.0" layoutY="6.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@img/unicornIcon.png" />
-                    </image>
-                </ImageView>
-            </children>
-        </AnchorPane>
-    </top>
-    <left>
-        <VBox prefHeight="489.0" prefWidth="142.0" style="-fx-background-color: lightblue;" BorderPane.alignment="CENTER">
-            <children>
-                <JFXButton fx:id="btRegister" alignment="CENTER" onAction="#register" prefHeight="54.0" prefWidth="200.0" text=" REGISTRAR" textFill="#141313">
-                    <font>
-                        <Font name="System Bold" size="12.0" />
-                    </font>
-                    <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@img/registerIcon.png" />
-                            </image></ImageView>
-                    </graphic>
-                </JFXButton>
-                <JFXButton fx:id="btAtt" onAction="#update" prefHeight="54.0" prefWidth="200.0" text=" ATUALIZAR ">
-                    <font>
-                        <Font name="System Bold" size="12.0" />
-                    </font>
-                    <graphic>
-                        <ImageView fitHeight="29.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@img/attIcon.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                </JFXButton>
-                <JFXButton fx:id="btRent" onAction="#rent" prefHeight="54.0" prefWidth="200.0" text="ALUGAR ">
-                    <font>
-                        <Font name="System Bold" size="12.0" />
-                    </font>
-                    <graphic>
-                        <ImageView fitHeight="31.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@img/alugarIcon.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                </JFXButton>
-                <JFXButton fx:id="btSell" onAction="#sell" prefHeight="54.0" prefWidth="200.0" text=" VENDER ">
-                    <font>
-                        <Font name="System Bold" size="12.0" />
-                    </font>
-                    <graphic>
-                        <ImageView fitHeight="31.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@img/venderIcon.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                </JFXButton>
-                <JFXButton fx:id="btRendimento" onAction="#addSeller" prefHeight="54.0" prefWidth="200.0" text=" RENDIMENTO">
-                    <font>
-                        <Font name="System Bold" size="12.0" />
-                    </font>
-                    <graphic>
-                        <ImageView fitHeight="33.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@img/rendimentoIcon.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                </JFXButton>
-                <AnchorPane prefHeight="164.0" prefWidth="142.0" />
-                <JFXButton prefHeight="57.0" prefWidth="142.0" text="SAIR">
-                    <graphic>
-                        <ImageView fitHeight="38.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@img/logoutIcon.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                    <font>
-                        <Font name="System Bold" size="12.0" />
-                    </font>
-                </JFXButton>
-            </children>
-        </VBox>
-    </left>
+   <top>
+      <AnchorPane prefHeight="88.0" prefWidth="200.0" style="-fx-background-color: lightblue;" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="227.0" layoutY="29.0" text="UNICORN       DEALERSHIP" textFill="#e41313">
+               <font>
+                  <Font name="Palatino Linotype Bold" size="24.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="47.0" fitWidth="47.0" layoutX="356.0" layoutY="14.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/unicornIcon.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </top>
+   <left>
+      <VBox prefHeight="489.0" prefWidth="136.0" style="-fx-background-color: lightblue;" BorderPane.alignment="CENTER">
+         <children>
+            <JFXButton onAction="#register" prefHeight="54.0" prefWidth="158.0" text="REGISTRAR">
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/registerIcon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </JFXButton>
+            <JFXButton onAction="#update" prefHeight="54.0" prefWidth="162.0" text="ATUALIZAR">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/attIcon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </JFXButton>
+            <JFXButton onAction="#rent" prefHeight="54.0" prefWidth="158.0" text="ALUGAR">
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/alugarIcon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </JFXButton>
+            <JFXButton onAction="#sell" prefHeight="54.0" prefWidth="231.0" text="VENDER">
+               <graphic>
+                  <ImageView fitHeight="38.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/venderIcon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </JFXButton>
+            <JFXButton onAction="#yield" prefHeight="54.0" prefWidth="137.0" text="RENDIMENTO">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/rendimentoIcon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton onAction="#sellers" prefHeight="54.0" prefWidth="146.0" text=" VENDEDORES">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/sellerIcon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <AnchorPane prefHeight="111.0" prefWidth="136.0" />
+            <JFXButton onAction="#out" prefHeight="54.0" prefWidth="164.0" text="SAIR">
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/logoutIcon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </VBox>
+   </left>
 </BorderPane>

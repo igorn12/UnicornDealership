@@ -7,19 +7,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import main.Principal;
-import persistence.AutomovelDAO;
-
+import persistence.VeiculoDAO;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
 
 public class RegisterController implements Initializable {
-    private AutomovelDAO veiculoDAO = new AutomovelDAO();
-
+    private VeiculoDAO veiculoDAO = new VeiculoDAO();
 
     private enum TIPO{MOTO, CARRO};
     private enum QUALIDADE{NOVO, SEMINOVO};
@@ -28,7 +27,7 @@ public class RegisterController implements Initializable {
     private ImageView vehicleIcon;
 
     @FXML
-    private JFXTextField kmRodados, placa;
+    private JFXTextField kmRodados, placa, anoVeiculo, valorAluguel, valorVenda, modelo, descricao;
 
     @FXML
     private JFXComboBox<TIPO> cbTipo;
@@ -49,6 +48,7 @@ public class RegisterController implements Initializable {
         if (cbTipo.getSelectionModel().getSelectedItem().equals(TIPO.CARRO))
             vehicleIcon.setImage(new Image("/view/img/carroIcon.png"));
     }
+
     @FXML
     private void txField(){
         if(cbQualidade.getSelectionModel().getSelectedItem().equals(QUALIDADE.SEMINOVO))
@@ -56,6 +56,7 @@ public class RegisterController implements Initializable {
         if (cbQualidade.getSelectionModel().getSelectedItem().equals(QUALIDADE.NOVO))
             kmRodados.setVisible(false);
     }
+
     @FXML
     private void gerarPlaca(){
         Random rand = new Random();
@@ -75,6 +76,43 @@ public class RegisterController implements Initializable {
         }
 
         placa.setText(sb.toString());
+    }
+
+    @FXML
+    private void addVeiculo(){
+        if(placa.getText().isEmpty()|| modelo.getText().isEmpty()||valorAluguel.getText().isEmpty()||valorVenda.getText().isEmpty()||anoVeiculo.getText().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Atenção");
+            alert.setHeaderText("Os campos obrigatórios estão vazios");
+            alert.setContentText("OS CAMPOS COM * SÃO OBRIGATÓRIOS");
+
+            alert.showAndWait();
+        }else{
+            int ano = Integer.parseInt(anoVeiculo.getText());
+            double aluguel, venda, kms;
+            aluguel = Double.parseDouble(valorAluguel.getText());
+            venda = Double.parseDouble(valorVenda.getText());
+            if(cbQualidade.getSelectionModel().getSelectedItem().equals(QUALIDADE.SEMINOVO)){
+                kms = Double.parseDouble(kmRodados.getText());
+            }else{
+                kmRodados.setText("0");
+                kms = Double.parseDouble(kmRodados.getText());
+            }
+            veiculoDAO.insertVeiculo(ano,placa.getText(), modelo.getText(), aluguel, venda, kms,cbTipo.getSelectionModel().getSelectedItem().toString(), descricao.getText());
+            limparCampos();
+        }
+    }
+
+    @FXML
+    private void limparCampos(){
+        placa.clear();
+        cbTipo.getSelectionModel().clearSelection();
+        cbQualidade.getSelectionModel().clearSelection();
+        modelo.clear();
+        valorVenda.clear();
+        valorAluguel.clear();
+        kmRodados.clear();
+        descricao.clear();
     }
 
     @Override

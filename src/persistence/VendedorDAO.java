@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 
 public class VendedorDAO {
@@ -14,7 +15,7 @@ public class VendedorDAO {
 
     private final String INSERTVENDEDOR = "INSERT INTO VENDEDOR(NOME_VENDEDOR, CPF_VENDEDOR, TEL_VENDEDOR, SALARIO) VALUES (?,?,?,?)";
     private final String UPDATEVENDEDOR = "UPDATE VENDEDOR SET CPF_VENDEDOR = OR NOME_VENDEDOR  = ? WHERE CPF_VENDEDOR = ? ";
-    private final String DELETEVENDEDOR = "DELETE FROM VENDEDOR WHERE NOME_VENDEDOR = ? OR CPF_VENDEDOR = ?";
+    private final String DELETEVENDEDOR = "DELETE FROM VENDEDOR WHERE NOME_VENDEDOR = ?";
     private final String LISTVENDEDOR = "SELECT * FROM VENDEDOR";
 
 
@@ -62,5 +63,24 @@ public class VendedorDAO {
 
         Collections.sort(lista);
         return lista;
+    }
+
+    public boolean deleteVendedor(Vendedor v){
+        try {
+            con.conecta();
+            PreparedStatement preparaInstrucao;
+            preparaInstrucao = con.getConexao().prepareStatement(DELETEVENDEDOR);
+
+            preparaInstrucao.setString(1, v.getNomeVendedor());
+
+            preparaInstrucao.execute();
+
+            con.desconecta();
+
+            return true;
+
+        } catch (SQLException e) {
+            return false;
+        }
     }
 }

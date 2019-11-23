@@ -1,7 +1,7 @@
 package model;
 
-public class Automovel implements Comparable<Automovel>{
-    private int idAutomovel;
+public class Veiculo implements Comparable<Veiculo>{
+    private int idVeiculo;
     private int ano;
     private String tipo;
     private String modelo;
@@ -11,8 +11,18 @@ public class Automovel implements Comparable<Automovel>{
     private double valorVenda;
     private double valorAluguel;
 
-    public Automovel(int idAutomovel, int ano, String tipo, String modelo, String placa, String descricao, double kmRodados, double valorVenda, double valorAluguel) {
-        this.idAutomovel = idAutomovel;
+    public Veiculo(int idVeiculo, int ano, String tipo, String modelo, String placa, double kmRodados, double valorVenda, double valorAluguel) {
+        this.idVeiculo = idVeiculo;
+        this.ano = ano;
+        this.tipo = tipo;
+        this.modelo = modelo;
+        this.placa = placa;
+        this.kmRodados = kmRodados;
+        this.valorVenda = valorVenda;
+        this.valorAluguel = valorAluguel;
+    }
+
+    public Veiculo(int ano, String tipo, String modelo, String placa, String descricao, double kmRodados, double valorVenda, double valorAluguel) {
         this.ano = ano;
         this.tipo = tipo;
         this.modelo = modelo;
@@ -23,18 +33,7 @@ public class Automovel implements Comparable<Automovel>{
         this.valorAluguel = valorAluguel;
     }
 
-    public Automovel(int ano, String tipo, String modelo, String placa, String descricao, double kmRodados, double valorVenda, double valorAluguel) {
-        this.ano = ano;
-        this.tipo = tipo;
-        this.modelo = modelo;
-        this.placa = placa;
-        this.descricao = descricao;
-        this.kmRodados = kmRodados;
-        this.valorVenda = valorVenda;
-        this.valorAluguel = valorAluguel;
-    }
-
-    public Automovel(int ano, String tipo, String modelo, String placa, double kmRodados, double valorVenda, double valorAluguel) {
+    public Veiculo(int ano, String tipo, String modelo, String placa, double kmRodados, double valorVenda, double valorAluguel) {
         this.ano = ano;
         this.tipo = tipo;
         this.modelo = modelo;
@@ -45,11 +44,11 @@ public class Automovel implements Comparable<Automovel>{
     }
 
     public int getIdAutomovel() {
-        return idAutomovel;
+        return idVeiculo;
     }
 
     public void setIdAutomovel(int idAutomovel) {
-        this.idAutomovel = idAutomovel;
+        this.idVeiculo = idAutomovel;
     }
 
     public int getAno() {
@@ -122,7 +121,7 @@ public class Automovel implements Comparable<Automovel>{
     }
 
     @Override
-    public int compareTo(Automovel t) {
+    public int compareTo(Veiculo t) {
         return this.getTipo().compareTo(t.tipo);
     }
 }

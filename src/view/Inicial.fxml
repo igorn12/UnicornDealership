@@ -2,6 +2,8 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -41,7 +43,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </JFXButton>
-            <JFXButton onAction="#update" prefHeight="54.0" prefWidth="162.0" text="ATUALIZAR">
+            <JFXButton onAction="#toManage" prefHeight="54.0" prefWidth="162.0" text="GERENCIAR">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -53,31 +55,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </JFXButton>
-            <JFXButton onAction="#rent" prefHeight="54.0" prefWidth="158.0" text="ALUGAR">
-               <graphic>
-                  <ImageView fitHeight="37.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@img/alugarIcon.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </JFXButton>
-            <JFXButton onAction="#sell" prefHeight="54.0" prefWidth="231.0" text="VENDER">
-               <graphic>
-                  <ImageView fitHeight="38.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@img/venderIcon.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </JFXButton>
-            <JFXButton prefHeight="54.0" prefWidth="137.0" text="RENDIMENTO">
+            <JFXButton onAction="#yield" prefHeight="54.0" prefWidth="137.0" text="RENDIMENTO">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -89,7 +67,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton onAction="#addSeller" prefHeight="54.0" prefWidth="146.0" text=" VENDEDORES">
+            <JFXButton onAction="#sellers" prefHeight="54.0" prefWidth="146.0" text=" VENDEDORES">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -101,8 +79,8 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <AnchorPane prefHeight="111.0" prefWidth="136.0" />
-            <JFXButton prefHeight="54.0" prefWidth="164.0" text="SAIR">
+            <AnchorPane prefHeight="219.0" prefWidth="136.0" />
+            <JFXButton onAction="#out" prefHeight="54.0" prefWidth="164.0" text="SAIR">
                <graphic>
                   <ImageView fitHeight="37.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -117,4 +95,19 @@
          </children>
       </VBox>
    </left>
+   <center>
+      <TableView fx:id="veiculos" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="colunaIdVeiculo" prefWidth="42.0" text="COD" />
+          <TableColumn fx:id="colunaAno" prefWidth="63.0" text="ANO" />
+            <TableColumn fx:id="colunaTipo" prefWidth="77.0" text="TIPO" />
+            <TableColumn fx:id="colunaModelo" prefWidth="174.0" text="MODELO" />
+            <TableColumn fx:id="colunaPlaca" text="PLACA" />
+            <TableColumn fx:id="colunaKm" prefWidth="55.0" text="KM" />
+            <TableColumn fx:id="colunaVenda" prefWidth="70.0" text="VENDA" />
+            <TableColumn fx:id="colunaAluguel" prefWidth="85.0" text="ALUGUEL" />
+            <TableColumn fx:id="colunaAnoVeiculo1" prefWidth="74.0" text="ANO" />
+        </columns>
+      </TableView>
+   </center>
 </BorderPane>
