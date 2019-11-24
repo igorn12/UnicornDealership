@@ -63,7 +63,7 @@
                </children>
             </AnchorPane>
             <Label text="  Escolha o objeto!!" GridPane.columnIndex="4" GridPane.columnSpan="2" />
-            <JFXComboBox fx:id="cbQualidade" onAction="#txField" prefHeight="25.0" prefWidth="157.0" promptText="Novo/Seminovo" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+            <JFXComboBox fx:id="cbQualidade" labelFloat="true" onAction="#txField" prefHeight="25.0" prefWidth="157.0" promptText="Novo/Seminovo" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="5" />
             <JFXTextField fx:id="placa" labelFloat="true" promptText="Placa" GridPane.columnIndex="3" GridPane.rowIndex="1" />
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
                <children>

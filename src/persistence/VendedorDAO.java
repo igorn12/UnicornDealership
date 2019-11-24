@@ -5,18 +5,18 @@ import model.Vendedor;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 
 public class VendedorDAO {
     private Conection con = new Conection();
 
     private final String INSERTVENDEDOR = "INSERT INTO VENDEDOR(NOME_VENDEDOR, CPF_VENDEDOR, TEL_VENDEDOR, SALARIO) VALUES (?,?,?,?)";
-    private final String UPDATEVENDEDOR = "UPDATE VENDEDOR SET CPF_VENDEDOR = OR NOME_VENDEDOR  = ? WHERE CPF_VENDEDOR = ? ";
+    private final String UPDATEVENDEDOR = "UPDATE VENDEDOR SET TEL_VENDEDOR  = ? WHERE TEL_VENDEDOR = ? ";
+    private final String UPDATESALARIOVENDEDOR = "UPDATE VENDEDOR SET SALARIO = ? WHERE SALARIO = ?";
+    private final String UPDATECPFVENDEDOR = "UPDATE VENDEDOR SET CPF_VENDEDOR = ? WHERE CPF_VENDEDOR = ?";
     private final String DELETEVENDEDOR = "DELETE FROM VENDEDOR WHERE NOME_VENDEDOR = ?";
-    private final String LISTVENDEDOR = "SELECT * FROM VENDEDOR";
+    private final String LISTVENDEDORNOME = "SELECT NOME_VENDEDOR FROM VENDEDOR";
 
 
     public boolean insertVendedor(String nome, String cpf, String telefone, double salario){
@@ -41,29 +41,6 @@ public class VendedorDAO {
 
         }
     }
-    public ArrayList<Vendedor> listVendedor() {
-        ArrayList<Vendedor> lista = new ArrayList<>();
-
-        try {
-            con.conecta();
-            Statement preparaInstrucao;
-            preparaInstrucao = con.getConexao().createStatement();
-
-
-            ResultSet rs = preparaInstrucao.executeQuery(LISTVENDEDOR);
-
-            while (rs.next()) {
-                Vendedor v = new Vendedor(rs.getString("NOME_VENDEDOR"), rs.getString("CPF_VENDEDOR"), rs.getString("TEL_VENDEDOR"), rs.getDouble("SALARIO"));
-                lista.add(v);
-            }
-            con.desconecta();
-        } catch (SQLException sqle) {
-            System.out.println(sqle.getMessage());
-        }
-
-        Collections.sort(lista);
-        return lista;
-    }
 
     public boolean deleteVendedor(Vendedor v){
         try {
@@ -83,4 +60,110 @@ public class VendedorDAO {
             return false;
         }
     }
+/*
+    public boolean updateNomeVendedor(Vendedor v){
+        try {
+            con.conecta();
+            PreparedStatement preparaInstrucao;
+            preparaInstrucao = con.getConexao().prepareStatement(UPDATEVENDEDOR);
+
+            preparaInstrucao.setString(1, v.getTelefone());
+
+            preparaInstrucao.execute();
+
+            con.desconecta();
+
+            return true;
+
+        } catch (SQLException e) {
+            return false;
+        }
+    }
+
+    public boolean updateCpfVendedor(Vendedor v){
+        try {
+            con.conecta();
+            PreparedStatement preparaInstrucao;
+            preparaInstrucao = con.getConexao().prepareStatement(UPDATECPFVENDEDOR);
+
+            preparaInstrucao.setString(1, v.getCpfVendedor());
+
+            preparaInstrucao.execute();
+
+            con.desconecta();
+
+            return true;
+
+        } catch (SQLException e) {
+            return false;
+        }
+    }
+
+    public boolean updateSalarioVendedor(Vendedor v){
+        try{
+            con.conecta();
+            PreparedStatement preparaInstrucao;
+            preparaInstrucao = con.getConexao().prepareStatement(UPDATESALARIOVENDEDOR);
+
+            preparaInstrucao.setDouble(1, v.getSalario());
+
+            preparaInstrucao.execute();
+
+            con.desconecta();
+            return true;
+        }catch(SQLException e){
+            return false;
+        }
+    }
+*/
+    public ArrayList<Vendedor> listVendedor() {
+        ArrayList<Vendedor> lista = new ArrayList<>();
+
+        try {
+            con.conecta();
+            PreparedStatement preparaInstrucao;
+            preparaInstrucao = con.getConexao().prepareStatement(LISTVENDEDORNOME);
+
+
+            ResultSet rs = preparaInstrucao.executeQuery();
+
+            while (rs.next()) {
+                Vendedor v = new Vendedor(rs.getString("NOME_VENDEDOR"), rs.getString("CPF_VENDEDOR"),
+                        rs.getString("TEL_VENDEDOR"), rs.getDouble("SALARIO"));
+                lista.add(v);
+            }
+            con.desconecta();
+        } catch (SQLException sqle) {
+            System.out.println(sqle.getMessage());
+        }
+
+        Collections.sort(lista);
+        return lista;
+    }
+
+    public ArrayList<Vendedor> listVendedorNome() {
+        ArrayList<Vendedor> lista = new ArrayList<>();
+
+        try {
+            con.conecta();
+            PreparedStatement preparaInstrucao;
+            preparaInstrucao = con.getConexao().prepareStatement(LISTVENDEDORNOME);
+
+
+            ResultSet rs = preparaInstrucao.executeQuery();
+
+            while (rs.next()) {
+                Vendedor v = new Vendedor(rs.getString("NOME_VENDEDOR"));
+                lista.add(v);
+            }
+            con.desconecta();
+        } catch (SQLException sqle) {
+            System.out.println(sqle.getMessage());
+        }
+
+        Collections.sort(lista);
+        return lista;
+    }
+
+
 }

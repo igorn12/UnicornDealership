@@ -55,7 +55,7 @@
                   <JFXButton layoutY="2.0" onAction="#voltar" prefHeight="32.0" prefWidth="80.0" style="-fx-background-color: aquamarine;" text="Voltar" />
                </children>
             </AnchorPane>
-            <JFXComboBox labelFloat="true" onAction="#mostrarInf" prefHeight="25.0" prefWidth="209.0" promptText="Nome" GridPane.columnIndex="2" GridPane.columnSpan="2" />
+            <JFXComboBox labelFloat="true" prefHeight="25.0" prefWidth="209.0" promptText="Nome" GridPane.columnIndex="2" GridPane.columnSpan="2" />
          </children>
       </GridPane>
    </center>

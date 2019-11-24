@@ -63,7 +63,7 @@
                </children>
             </AnchorPane>
             <Label text="  Escolha o objeto!!" GridPane.columnIndex="4" GridPane.columnSpan="2" />
-            <JFXComboBox fx:id="cbQualidade" onAction="#txField" prefHeight="25.0" prefWidth="157.0" promptText="Novo/Seminovo" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+            <JFXComboBox fx:id="cbQualidade" labelFloat="true" onAction="#txField" prefHeight="25.0" prefWidth="157.0" promptText="Novo/Seminovo" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="5" />
             <JFXTextField fx:id="placa" labelFloat="true" promptText="Placa" GridPane.columnIndex="3" GridPane.rowIndex="1" />
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
                <children>
@@ -115,7 +115,7 @@
                </children>
             </AnchorPane>
             <JFXTextField fx:id="valorVenda" labelFloat="true" promptText="Valor da Venda" GridPane.columnIndex="5" GridPane.rowIndex="4" />
-            <JFXButton prefHeight="4.0" prefWidth="179.0" style="-fx-background-color: lightgreen;" text="Adicionar Veiculo" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="8" GridPane.rowSpan="2">
+            <JFXButton onAction="#addVeiculo" prefHeight="4.0" prefWidth="179.0" style="-fx-background-color: lightgreen;" text="Adicionar Veiculo" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="8" GridPane.rowSpan="2">
                <graphic>
                   <ImageView fitHeight="32.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                      <image>

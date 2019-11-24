@@ -10,25 +10,24 @@ import java.util.ArrayList;
 public class VeiculoDAO {
     Conection con = new Conection();
 
-    private final String INSERTVEICULO = "INSERT INTO VEICULO(ANO, MODELO, PLACA, ALUGUEL, VENDA, KM_RODADOS, TIPO, DESCRICAO) VALUES (?,?,?,?,?,?,?,?)";
-    private final String LISTVEICULOS = "SELECT ID_VEICULO, ANO, MODELO, PLACA, ALUGUEL, VENDA, KM_RODADOS, TIPO FROM VEICULO";
-    private final String LISTVEICULOSMODELO = "SELECT ID_VEICULO, ANO, MODELO, PLACA, ALUGUEL, VENDA, KM_RODADOS, TIPO FROM VEICULO";
+    private final String INSERTVEICULO = "INSERT INTO VEICULO(MODELO, PLACA, ALUGUEL, VENDA, KM_RODADOS, TIPO, DESCRICAO, ANO) VALUES (?,?,?,?,?,?,?,?)";
+    private final String LISTVEICULOS = "SELECT ID_VEICULO, MODELO, PLACA, ALUGUEL, VENDA, KM_RODADOS, TIPO, ANO FROM VEICULO";
     private final String DELETEVEICULO = "DELETE FROM VEICULO WHERE MODELO = ?";
 
-    public boolean insertVeiculo(int ano,String modelo,String placa,double aluguel,double venda,double kms,String tipo,String descricao){
+    public boolean insertVeiculo(Veiculo v){
         try {
             con.conecta();
             PreparedStatement preparaInstrucao;
             preparaInstrucao = con.getConexao().prepareStatement(INSERTVEICULO);
 
-            preparaInstrucao.setInt(1, ano);
-            preparaInstrucao.setString(2, modelo.toUpperCase());
-            preparaInstrucao.setString(3, placa.toUpperCase());
-            preparaInstrucao.setDouble(4, aluguel);
-            preparaInstrucao.setDouble(5, venda);
-            preparaInstrucao.setDouble(6, kms);
-            preparaInstrucao.setString(7, tipo.toUpperCase());
-            preparaInstrucao.setString(8, descricao.toUpperCase());
+            preparaInstrucao.setString(1, v.getModelo().toUpperCase());
+            preparaInstrucao.setString(2, v.getPlaca().toUpperCase());
+            preparaInstrucao.setDouble(3, v.getValorAluguel());
+            preparaInstrucao.setDouble(4, v.getValorVenda());
+            preparaInstrucao.setDouble(5, v.getKmRodados());
+            preparaInstrucao.setString(6, v.getTipo().toUpperCase());
+            preparaInstrucao.setString(7, v.getDescricao().toUpperCase());
+            preparaInstrucao.setInt(8, v.getAno());
 
             preparaInstrucao.execute();
 
@@ -85,50 +84,4 @@ public class VeiculoDAO {
         return lista;
     }
 
-    public ArrayList<Veiculo> listVeiculoId(int idVeiculo){
-        ArrayList<Veiculo> lista = new ArrayList<>();
-        try {
-            con.conecta();
-            PreparedStatement preparaInstrucao;
-            preparaInstrucao = con.getConexao().prepareStatement(LISTVEICULOS);
-
-            preparaInstrucao.setInt(1, idVeiculo);
-
-            ResultSet rs = preparaInstrucao.executeQuery();
-
-            while (rs.next()) {
-                Veiculo v = new Veiculo(rs.getInt("ID_VEICULO"), rs.getInt("ANO"),rs.getString("TIPO"),
-                        rs.getString("MODELO"), rs.getString("PLACA"), rs.getDouble("KM_RODADOS"),
-                        rs.getDouble("VENDA"), rs.getDouble("ALUGUEL"));
-                lista.add(v);
-            }
-            con.desconecta();
-        } catch (SQLException sqle) {
-            System.out.println(sqle.getMessage());
-        }
-        return lista;
-    }
-    public ArrayList<Veiculo> listVeiculoModelo(String modelo){
-        ArrayList<Veiculo> lista = new ArrayList<>();
-        try {
-            con.conecta();
-            PreparedStatement preparaInstrucao;
-            preparaInstrucao = con.getConexao().prepareStatement(LISTVEICULOSMODELO);
-
-            preparaInstrucao.setString(1, modelo);
-
-            ResultSet rs = preparaInstrucao.executeQuery();
-
-            while (rs.next()) {
-                Veiculo v = new Veiculo(rs.getInt("ID_VEICULO"), rs.getInt("ANO"),rs.getString("TIPO"),
-                        rs.getString("MODELO"), rs.getString("PLACA"), rs.getDouble("KM_RODADOS"),
-                        rs.getDouble("VENDA"), rs.getDouble("ALUGUEL"));
-                lista.add(v);
-            }
-            con.desconecta();
-        } catch (SQLException sqle) {
-            System.out.println(sqle.getMessage());
-        }
-        return lista;
-    }
 }

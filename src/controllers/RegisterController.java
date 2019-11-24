@@ -1,6 +1,7 @@
 package controllers;
 
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +12,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import main.Principal;
+import model.Veiculo;
 import persistence.VeiculoDAO;
 import java.io.IOException;
 import java.net.URL;
@@ -27,7 +29,10 @@ public class RegisterController implements Initializable {
     private ImageView vehicleIcon;
 
     @FXML
-    private JFXTextField kmRodados, placa, anoVeiculo, valorAluguel, valorVenda, modelo, descricao;
+    private JFXTextField kmRodados, placa, anoVeiculo, valorAluguel, valorVenda, modelo;
+
+    @FXML
+    private JFXTextArea descricao;
 
     @FXML
     private JFXComboBox<TIPO> cbTipo;
@@ -51,10 +56,11 @@ public class RegisterController implements Initializable {
 
     @FXML
     private void txField(){
-        if(cbQualidade.getSelectionModel().getSelectedItem().equals(QUALIDADE.SEMINOVO))
+        if(cbQualidade.getSelectionModel().getSelectedItem().equals(QUALIDADE.SEMINOVO)){
             kmRodados.setVisible(true);
-        if (cbQualidade.getSelectionModel().getSelectedItem().equals(QUALIDADE.NOVO))
+        }else{
             kmRodados.setVisible(false);
+        }
     }
 
     @FXML
@@ -80,7 +86,7 @@ public class RegisterController implements Initializable {
 
     @FXML
     private void addVeiculo(){
-        if(placa.getText().isEmpty()|| modelo.getText().isEmpty()||valorAluguel.getText().isEmpty()||valorVenda.getText().isEmpty()||anoVeiculo.getText().isEmpty()){
+        if(placa.getText().isEmpty() || modelo.getText().isEmpty() || valorAluguel.getText().isEmpty() || valorVenda.getText().isEmpty() || anoVeiculo.getText().isEmpty() || descricao.getText().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Atenção");
             alert.setHeaderText("Os campos obrigatórios estão vazios");
@@ -89,16 +95,17 @@ public class RegisterController implements Initializable {
             alert.showAndWait();
         }else{
             int ano = Integer.parseInt(anoVeiculo.getText());
-            double aluguel, venda, kms;
-            aluguel = Double.parseDouble(valorAluguel.getText());
-            venda = Double.parseDouble(valorVenda.getText());
-            if(cbQualidade.getSelectionModel().getSelectedItem().equals(QUALIDADE.SEMINOVO)){
-                kms = Double.parseDouble(kmRodados.getText());
+            Double aluguel, venda, kms;
+            aluguel = Double.valueOf(valorAluguel.getText());
+            venda = Double.valueOf(valorVenda.getText());
+            String tipo = String.valueOf(cbTipo.getSelectionModel().getSelectedItem());
+            if(cbQualidade.getSelectionModel().getSelectedItem().equals(QUALIDADE.NOVO)) {
+                kms = 0.0;
             }else{
-                kmRodados.setText("0");
-                kms = Double.parseDouble(kmRodados.getText());
+                kms = Double.valueOf(kmRodados.getText());
             }
-            veiculoDAO.insertVeiculo(ano,placa.getText(), modelo.getText(), aluguel, venda, kms,cbTipo.getSelectionModel().getSelectedItem().toString(), descricao.getText());
+            Veiculo v = new Veiculo(ano,tipo,modelo.getText(),placa.getText(), descricao.getText(), kms, venda,aluguel);
+            veiculoDAO.insertVeiculo(v);
             limparCampos();
         }
     }
@@ -113,6 +120,7 @@ public class RegisterController implements Initializable {
         valorAluguel.clear();
         kmRodados.clear();
         descricao.clear();
+        anoVeiculo.clear();
     }
 
     @Override

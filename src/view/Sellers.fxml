@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="577.0" prefWidth="776.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SellersController">
    <top>
       <AnchorPane prefHeight="88.0" prefWidth="776.0" style="-fx-background-color: lightblue;" BorderPane.alignment="CENTER">
@@ -30,12 +29,13 @@
       </AnchorPane>
    </top>
    <center>
-      <TableView prefHeight="289.0" prefWidth="771.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="tableVendedores" prefHeight="289.0" prefWidth="771.0" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn prefWidth="211.0" text="NOME" />
-          <TableColumn prefWidth="204.0" text="CPF" />
-            <TableColumn prefWidth="205.0" text="TELEFONE" />
-            <TableColumn prefWidth="155.0" text="SALARIO" />
+          <TableColumn fx:id="colunaNomeVendedor" prefWidth="234.0" text="NOME" />
+          <TableColumn fx:id="colunaCpfVendedor" prefWidth="198.0" text="CPF" />
+            <TableColumn fx:id="colunaTelVendedor" prefWidth="178.0" text="TELEFONE" />
+            <TableColumn fx:id="colunaSalarioVendedor" prefWidth="107.0" text="SALARIO" />
+            <TableColumn fx:id="colunaTotalVendas" prefWidth="58.0" text="VENDAS" />
         </columns>
       </TableView>
    </center>
@@ -47,7 +47,7 @@
             <AnchorPane prefHeight="90.0" prefWidth="19.0" />
             <JFXButton onAction="#attSeller" prefHeight="40.0" prefWidth="152.0" style="-fx-background-color: yellow;" text="Atualizar Vendedor" />
             <AnchorPane prefHeight="90.0" prefWidth="19.0" />
-            <JFXButton onAction="#removeSeller" prefHeight="40.0" prefWidth="152.0" style="-fx-background-color: red;" text="Remover Vendedor" textFill="#fcfcfc" />
+            <JFXButton onAction="#deleteSeller" prefHeight="40.0" prefWidth="152.0" style="-fx-background-color: red;" text="Remover Vendedor" textFill="#fcfcfc" />
             <AnchorPane prefHeight="90.0" prefWidth="139.0">
                <children>
                   <JFXButton layoutX="48.0" layoutY="45.0" onAction="#voltar" prefHeight="31.0" prefWidth="74.0" style="-fx-background-color: aquamarine;" text="Voltar" />

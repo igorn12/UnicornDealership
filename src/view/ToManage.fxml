@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="577.0" prefWidth="776.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ToManageController">
+    <top>
+        <AnchorPane prefHeight="88.0" prefWidth="200.0" style="-fx-background-color: lightblue;" BorderPane.alignment="CENTER">
+            <children>
+                <Label layoutX="281.0" layoutY="29.0" text="GERENCIAR VEÍCULO" textFill="#e40c0c">
+                    <font>
+                        <Font name="Palatino Linotype Bold" size="24.0" />
+                    </font>
+                </Label>
+                <ImageView fitHeight="43.0" fitWidth="46.0" layoutX="227.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@img/attIcon.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+    </top>
+    <center>
+        <TableView fx:id="tableVeiculos" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <columns>
+                <TableColumn fx:id="colunaIdVeiculo" prefWidth="43.0" text="ID" />
+                <TableColumn fx:id="colunaModelo" prefWidth="199.0" text="MODELO" />
+                <TableColumn fx:id="colunaPlaca" prefWidth="108.0" text="PLACA" />
+                <TableColumn fx:id="colunaAluguel" prefWidth="83.0" text="ALUGUEL" />
+                <TableColumn fx:id="colunaVenda" prefWidth="85.0" text="VENDA" />
+                <TableColumn fx:id="colunaKm" prefWidth="77.0" text="KM" />
+                <TableColumn fx:id="colunaTipo" prefWidth="101.0" text="TIPO" />
+                <TableColumn fx:id="colunaAnoVeiculo" prefWidth="79.0" text="ANO" />
+            </columns>
+        </TableView>
+    </center>
+    <bottom>
+        <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+                <AnchorPane prefHeight="100.0" prefWidth="187.0" />
+                <JFXButton onAction="#attVeiculo" prefHeight="39.0" prefWidth="132.0" style="-fx-background-color: cyan;" text="ATUALIZAR">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </JFXButton>
+                <AnchorPane prefHeight="100.0" prefWidth="71.0" />
+                <JFXButton onAction="#deleteVeiculo" prefHeight="39.0" prefWidth="139.0" style="-fx-background-color: orangered;" text="REMOVER">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </JFXButton>
+            <AnchorPane prefHeight="100.0" prefWidth="71.0" />
+            <JFXButton onAction="#venderVeiculo" prefHeight="39.0" prefWidth="139.0" style="-fx-background-color: gold;" text="VENDER">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </JFXButton>
+                <AnchorPane prefHeight="100.0" prefWidth="219.0">
+                    <children>
+                        <JFXButton layoutX="81.0" layoutY="50.0" onAction="#voltar" prefHeight="37.0" prefWidth="91.0" style="-fx-background-color: aquamarine;" text="Voltar" />
+                    </children>
+                </AnchorPane>
+            </children>
+        </HBox>
+    </bottom>
+</BorderPane>

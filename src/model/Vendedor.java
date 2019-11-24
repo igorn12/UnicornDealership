@@ -24,6 +24,10 @@ public class Vendedor implements Comparable<Vendedor>{
         this.salario = salario;
     }
 
+    public Vendedor(String nomeVendedor) {
+        this.nomeVendedor = nomeVendedor;
+    }
+
     public int getIdVendedor() {
         return idVendedor;
     }

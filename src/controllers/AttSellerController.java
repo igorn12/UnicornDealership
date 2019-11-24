@@ -7,16 +7,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import main.Principal;
+import model.Vendedor;
 import persistence.VendedorDAO;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class AttSellerController implements Initializable {
-    private VendedorDAO vendedorDAO = new VendedorDAO();
+    private VendedorDAO vendedores = new VendedorDAO();
 
     @FXML
-    JFXComboBox<VendedorDAO> nomesVendedores;
+    JFXComboBox<Vendedor> nomesVendedores;
 
     @FXML
     private void voltar() throws IOException{
@@ -27,6 +28,6 @@ public class AttSellerController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        nomesVendedores.getItems().setAll(vendedorDAO.listVendedor());
+        nomesVendedores.getItems().setAll(vendedores.listVendedorNome());
     }
 }

@@ -43,12 +43,12 @@ public class Veiculo implements Comparable<Veiculo>{
         this.valorAluguel = valorAluguel;
     }
 
-    public int getIdAutomovel() {
+    public int getIdVeiculo() {
         return idVeiculo;
     }
 
-    public void setIdAutomovel(int idAutomovel) {
-        this.idVeiculo = idAutomovel;
+    public void setIdVeiculo(int idVeiculo) {
+        this.idVeiculo = idVeiculo;
     }
 
     public int getAno() {
