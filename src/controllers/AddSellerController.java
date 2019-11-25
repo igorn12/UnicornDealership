@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import main.Principal;
+import model.Vendedor;
 import persistence.VendedorDAO;
 
 import java.io.IOException;
@@ -32,7 +33,8 @@ public class AddSellerController {
             alert.showAndWait();
         }else{
             double salario = Double.parseDouble(salarioVendedor.getText());
-            vendedorDAO.insertVendedor(nomeVendedor.getText(), cpfVendedor.getText(), telVendedor.getText(), salario);
+            Vendedor v = new Vendedor(nomeVendedor.getText(), cpfVendedor.getText(), telVendedor.getText(), salario);
+            vendedorDAO.insertVendedor(v);
             labelConfirm.setVisible(true);
             limparCampos();
         }

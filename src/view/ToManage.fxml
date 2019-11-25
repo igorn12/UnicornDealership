@@ -45,8 +45,8 @@
     <bottom>
         <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <children>
-                <AnchorPane prefHeight="100.0" prefWidth="187.0" />
-                <JFXButton onAction="#attVeiculo" prefHeight="39.0" prefWidth="132.0" style="-fx-background-color: cyan;" text="ATUALIZAR">
+                <AnchorPane prefHeight="100.0" prefWidth="240.0" />
+                <JFXButton onAction="#attVeiculo" prefHeight="39.0" prefWidth="132.0" style="-fx-background-color: gold;" text="ATUALIZAR">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
@@ -57,15 +57,9 @@
                         <Font name="System Bold" size="12.0" />
                     </font>
                 </JFXButton>
-            <AnchorPane prefHeight="100.0" prefWidth="71.0" />
-            <JFXButton onAction="#venderVeiculo" prefHeight="39.0" prefWidth="139.0" style="-fx-background-color: gold;" text="VENDER">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </JFXButton>
                 <AnchorPane prefHeight="100.0" prefWidth="219.0">
                     <children>
-                        <JFXButton layoutX="81.0" layoutY="50.0" onAction="#voltar" prefHeight="37.0" prefWidth="91.0" style="-fx-background-color: aquamarine;" text="Voltar" />
+                        <JFXButton layoutX="107.0" layoutY="50.0" onAction="#voltar" prefHeight="37.0" prefWidth="91.0" style="-fx-background-color: CYAN;" text="Voltar" />
                     </children>
                 </AnchorPane>
             </children>

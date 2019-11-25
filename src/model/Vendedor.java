@@ -2,11 +2,11 @@ package model;
 
 public class Vendedor implements Comparable<Vendedor>{
     private int idVendedor;
-    private int totalVendas;
     private String nomeVendedor;
     private String cpfVendedor;
     private String telefone;
     private double salario;
+    private int totalVendas;
 
     public Vendedor(int idVendedor, int totalVendas, String nomeVendedor, String cpfVendedor, String telefone, double salario) {
         this.idVendedor = idVendedor;
@@ -15,6 +15,14 @@ public class Vendedor implements Comparable<Vendedor>{
         this.cpfVendedor = cpfVendedor;
         this.telefone = telefone;
         this.salario = salario;
+    }
+
+    public Vendedor(String nomeVendedor, String cpfVendedor, String telefone, double salario, int totalVendas) {
+        this.nomeVendedor = nomeVendedor;
+        this.cpfVendedor = cpfVendedor;
+        this.telefone = telefone;
+        this.salario = salario;
+        this.totalVendas = totalVendas;
     }
 
     public Vendedor(String nomeVendedor, String cpfVendedor, String telefone, double salario) {

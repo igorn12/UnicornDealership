@@ -45,7 +45,6 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
@@ -53,7 +52,7 @@
             <JFXTextField fx:id="cpfVendedor" labelFloat="true" promptText="CPF do Vendedor" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="1" />
             <JFXTextField fx:id="telVendedor" promptText="Telefone para Contato" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="2" />
             <JFXTextField fx:id="salarioVendedor" promptText="Salario do Vendedor" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="3" />
-            <JFXButton onAction="#addVendedor" prefHeight="43.0" prefWidth="200.0" style="-fx-background-color: lightgreen;" text="Adicionar Vendedor" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="5" GridPane.rowSpan="2">
+            <JFXButton onAction="#addVendedor" prefHeight="43.0" prefWidth="200.0" style="-fx-background-color: lightgreen;" text="Adicionar Vendedor" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="4" GridPane.rowSpan="2">
                <graphic>
                   <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -62,9 +61,9 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="6">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="5">
                <children>
-                  <JFXButton layoutX="13.0" layoutY="-3.0" onAction="#voltar" prefHeight="34.0" prefWidth="75.0" style="-fx-background-color: aquamarine;" text="Voltar" />
+                  <JFXButton layoutX="13.0" layoutY="11.0" onAction="#voltar" prefHeight="34.0" prefWidth="75.0" style="-fx-background-color: cyan;" text="Voltar" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
@@ -103,7 +102,6 @@
                   </ImageView>
                </children>
             </AnchorPane>
-            <Label fx:id="labelConfirm" prefHeight="17.0" prefWidth="200.0" text="Vendedor Cadastrado com SUCESSO" textFill="#0de83c" visible="false" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="4" />
             <Label prefHeight="5.0" prefWidth="0.0" text=" *" textFill="#ee0909" GridPane.columnIndex="4">
                <font>
                   <Font name="System Bold" size="14.0" />

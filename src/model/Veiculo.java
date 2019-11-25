@@ -11,6 +11,9 @@ public class Veiculo implements Comparable<Veiculo>{
     private double valorVenda;
     private double valorAluguel;
 
+    public Veiculo() {
+    }
+
     public Veiculo(int idVeiculo, int ano, String tipo, String modelo, String placa, double kmRodados, double valorVenda, double valorAluguel) {
         this.idVeiculo = idVeiculo;
         this.ano = ano;

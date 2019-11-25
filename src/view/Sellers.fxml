@@ -50,7 +50,7 @@
             <JFXButton onAction="#deleteSeller" prefHeight="40.0" prefWidth="152.0" style="-fx-background-color: red;" text="Remover Vendedor" textFill="#fcfcfc" />
             <AnchorPane prefHeight="90.0" prefWidth="139.0">
                <children>
-                  <JFXButton layoutX="48.0" layoutY="45.0" onAction="#voltar" prefHeight="31.0" prefWidth="74.0" style="-fx-background-color: aquamarine;" text="Voltar" />
+                  <JFXButton layoutX="48.0" layoutY="45.0" onAction="#voltar" prefHeight="31.0" prefWidth="74.0" style="-fx-background-color: cyan;" text="Voltar" />
                </children>
             </AnchorPane>
          </children>

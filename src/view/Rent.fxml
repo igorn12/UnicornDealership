@@ -11,21 +11,20 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="577.0" prefWidth="776.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RentController">
    <top>
       <AnchorPane prefHeight="88.0" prefWidth="776.0" style="-fx-background-color: lightblue;" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="303.0" layoutY="29.0" text="ALUGAR VEICULO" textFill="#f20404">
-               <font>
-                  <Font name="Palatino Linotype Bold" size="24.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="41.0" fitWidth="38.0" layoutX="252.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="41.0" fitWidth="38.0" layoutX="298.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@img/alugarIcon.png" />
                </image>
             </ImageView>
+            <Label layoutX="349.0" layoutY="30.0" text="ALUGUÉIS" textFill="#f20606">
+               <font>
+                  <Font name="Palatino Linotype Bold" size="24.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </top>
@@ -44,7 +43,7 @@
    <bottom>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane prefHeight="100.0" prefWidth="332.0" />
+            <AnchorPane prefHeight="100.0" prefWidth="330.0" />
             <JFXButton onAction="#rentVeiculo" prefHeight="43.0" prefWidth="125.0" style="-fx-background-color: lightgreen;" text="ALUGAR">
                <font>
                   <Font name="System Bold" size="14.0" />
@@ -52,7 +51,7 @@
             </JFXButton>
             <AnchorPane prefHeight="100.0" prefWidth="321.0">
                <children>
-                  <JFXButton layoutX="213.0" layoutY="50.0" onAction="#voltar" prefHeight="34.0" prefWidth="90.0" style="-fx-background-color: aquamarine;" text="Voltar" />
+                  <JFXButton layoutX="213.0" layoutY="50.0" onAction="#voltar" prefHeight="34.0" prefWidth="90.0" style="-fx-background-color: cyan;" text="Voltar" />
                </children>
             </AnchorPane>
          </children>

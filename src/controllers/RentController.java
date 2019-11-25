@@ -66,14 +66,14 @@ public class RentController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        refreshAluguel();
-
         colunaIdVeiculo.setCellValueFactory(new PropertyValueFactory<Veiculo, Integer>("idVeiculo"));
         colunaModelo.setCellValueFactory(new PropertyValueFactory<Veiculo, String>("modelo"));
         colunaKm.setCellValueFactory(new PropertyValueFactory<Veiculo, Double>("kmRodados"));
         colunaAluguel.setCellValueFactory(new PropertyValueFactory<Veiculo, Double>("valorAluguel"));
         colunaAno.setCellValueFactory(new PropertyValueFactory<Veiculo, Integer>("ano"));
         colunaDescricao.setCellValueFactory(new PropertyValueFactory<Veiculo, String>("descricao"));
+
+        refreshAluguel();
     }
 
     private void refreshAluguel(){

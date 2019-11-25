@@ -67,12 +67,12 @@
             <JFXTextField fx:id="placa" labelFloat="true" promptText="Placa" GridPane.columnIndex="3" GridPane.rowIndex="1" />
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
                <children>
-                  <JFXButton layoutX="8.0" layoutY="12.0" onAction="#gerarPlaca" prefHeight="25.0" prefWidth="81.0" style="-fx-background-color: aquamarine;" text="Gerar Placa" />
+                  <JFXButton layoutX="8.0" layoutY="12.0" onAction="#gerarPlaca" prefHeight="25.0" prefWidth="81.0" style="-fx-background-color: cyan;" text="Gerar Placa" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="9">
                <children>
-                  <JFXButton layoutY="-1.0" onAction="#voltar" prefHeight="30.0" prefWidth="79.0" style="-fx-background-color: aquamarine;" text="Voltar" />
+                  <JFXButton layoutY="-1.0" onAction="#voltar" prefHeight="30.0" prefWidth="79.0" style="-fx-background-color: cyan;" text="Voltar" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">

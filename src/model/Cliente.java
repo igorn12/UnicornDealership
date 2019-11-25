@@ -30,6 +30,10 @@ public class Cliente implements Comparable<Cliente>{
         this.telCliente = telCliente;
     }
 
+    public Cliente(String nomeCliente) {
+        this.nomeCliente = nomeCliente;
+    }
+
     public int getIdCliente() {
         return idCliente;
     }

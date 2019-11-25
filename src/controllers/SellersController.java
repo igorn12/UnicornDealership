@@ -50,8 +50,7 @@ public class SellersController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        vendedores.addAll(vendedorDAO.listVendedor());
-        tableVendedores.setItems(vendedores);
+        refreshVendedores();
 
         colunaNomeVendedor.setCellValueFactory(new PropertyValueFactory<Vendedor, String>("nomeVendedor"));
         colunaCpfVendedor.setCellValueFactory(new PropertyValueFactory<Vendedor, String>("cpfVendedor"));
