@@ -1,9 +1,7 @@
 package persistence;
 
-import model.Veiculo;
-import model.Vendas;
 
-import java.sql.Array;
+import model.Vendas;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

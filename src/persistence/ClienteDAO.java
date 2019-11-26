@@ -63,7 +63,7 @@ public class ClienteDAO {
         try {
             con.conecta();
             PreparedStatement preparaInstrucao;
-            preparaInstrucao = con.getConexao().prepareStatement(LISTCLIENTE);
+            preparaInstrucao = con.getConexao().prepareStatement(LISTNOMECLIENTE);
 
             ResultSet rs = preparaInstrucao.executeQuery();
 

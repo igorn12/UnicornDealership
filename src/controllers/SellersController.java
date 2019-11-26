@@ -23,6 +23,8 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class SellersController implements Initializable {
+    public static Vendedor v;
+
     private VendedorDAO vendedorDAO = new VendedorDAO();
 
     private ObservableList<Vendedor> vendedores = FXCollections.observableArrayList();
@@ -46,17 +48,17 @@ public class SellersController implements Initializable {
     private TableColumn<Vendedor, Integer> colunaTotalVendas;
 
     @FXML
-    public static Stage principal;
+    public static Stage vendedor;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        refreshVendedores();
-
         colunaNomeVendedor.setCellValueFactory(new PropertyValueFactory<Vendedor, String>("nomeVendedor"));
         colunaCpfVendedor.setCellValueFactory(new PropertyValueFactory<Vendedor, String>("cpfVendedor"));
         colunaTelVendedor.setCellValueFactory(new PropertyValueFactory<Vendedor, String>("telefone"));
         colunaSalarioVendedor.setCellValueFactory(new PropertyValueFactory<Vendedor, Double>("salario"));
         colunaTotalVendas.setCellValueFactory(new PropertyValueFactory<Vendedor, Integer>("totalVendas"));
+
+        refreshVendedores();
     }
 
     private void refreshVendedores() {
@@ -72,18 +74,27 @@ public class SellersController implements Initializable {
          stage.setScene(new Scene(addSeller));
          stage.setTitle("Adicionar Vendedor");
          stage.show();
-         principal = stage;
+         vendedor = stage;
          refreshVendedores();
     }
 
     @FXML
     private void attSeller() throws Exception{
-        Parent attSeller = FXMLLoader.load(getClass().getResource("/view/AttSeller.fxml"));
-        Stage stage = new Stage();
-        stage.setScene(new Scene(attSeller));
-        stage.setTitle("Atualizar Vendedor");
-        stage.show();
-        principal = stage;
+        if(tableVendedores.getSelectionModel().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Atenção");
+            alert.setHeaderText("Vendedor não selecionado");
+            alert.setContentText("Escolha um Vendedor para remover");
+            alert.showAndWait();
+        } else {
+            Parent attSeller = FXMLLoader.load(getClass().getResource("/view/AttSeller.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(attSeller));
+            stage.setTitle("Atualizar Vendedor");
+            stage.show();
+            vendedor = stage;
+            v = tableVendedores.getSelectionModel().getSelectedItem();
+        }
         refreshVendedores();
     }
 
@@ -114,8 +125,6 @@ public class SellersController implements Initializable {
                 tableVendedores.getItems().remove(indice);
             }
         }
+        refreshVendedores();
     }
-
-
-
 }

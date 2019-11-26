@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -54,7 +55,25 @@
                   <JFXButton layoutY="2.0" onAction="#voltar" prefHeight="32.0" prefWidth="80.0" style="-fx-background-color: cyan;" text="Voltar" />
                </children>
             </AnchorPane>
-            <JFXComboBox labelFloat="true" prefHeight="25.0" prefWidth="209.0" promptText="Nome" GridPane.columnIndex="2" GridPane.columnSpan="2" />
+            <JFXTextField fx:id="txAlteracao" labelFloat="true" promptText="Digite aqui:" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="233.0" text="ITEM A SER ATUALIZADO:" textFill="#f50606" GridPane.columnIndex="2" GridPane.columnSpan="2">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <JFXComboBox fx:id="cbItens" labelFloat="true" prefHeight="25.0" prefWidth="230.0" promptText="Selecione" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+            <JFXButton onAction="#updateVendedor" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: YELLOW;" text="ATUALIZAR" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="5" GridPane.rowSpan="2">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/updatedIcon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
          </children>
       </GridPane>
    </center>

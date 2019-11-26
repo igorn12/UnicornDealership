@@ -12,21 +12,18 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import main.Principal;
 import model.Veiculo;
-import model.Vendas;
 import persistence.VeiculoDAO;
-import persistence.VendasDAO;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ToManageController implements Initializable {
+    public static Veiculo veiculo;
     private VeiculoDAO veiculoDAO = new VeiculoDAO();
-
-    private VendasDAO vendasDAO = new VendasDAO();
 
     private ObservableList<Veiculo> veiculos = FXCollections.observableArrayList();
 
@@ -57,6 +54,8 @@ public class ToManageController implements Initializable {
     @FXML
     private TableColumn<Veiculo, Integer> colunaAnoVeiculo;
 
+    @FXML
+    public static Stage principal;
 
     @FXML
     private void voltar() throws IOException {
@@ -89,48 +88,36 @@ public class ToManageController implements Initializable {
 
     @FXML
     private void attVeiculo() throws IOException {
-        Parent attVeiculo = FXMLLoader.load(getClass().getResource("/view/AttSeller.fxml"));
-        Principal.principalStage.setScene(new Scene(attVeiculo));
-    }
-
-    @FXML
-    private void venderVeiculo(){
         if(tableVeiculos.getSelectionModel().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Atenção");
-            alert.setHeaderText("Veículo não selecionado");
-            alert.setContentText("Escolha um Veículo para remover");
+            alert.setHeaderText("Veiculo não selecionado");
+            alert.setContentText("Escolha um Veiculo para atualizar");
             alert.showAndWait();
         } else {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Confirmação");
-            alert.setHeaderText("Confirmar venda de veículo");
-            alert.setContentText("Tem certeza que deseja vender o cadastro?");
-
-            Optional<ButtonType> result = alert.showAndWait();
-            if (result.get() == ButtonType.OK){
-                double rendimento = Double.valueOf(tableVeiculos.getSelectionModel().getSelectedItem().getValorVenda());
-                int idVeiculo = Integer.valueOf(tableVeiculos.getSelectionModel().getSelectedItem().getIdVeiculo());
-                Vendas vendas = new Vendas(idVeiculo, rendimento);
-                vendasDAO.insertVendas(vendas);
-                int indice = tableVeiculos.getSelectionModel().getSelectedIndex();
-                tableVeiculos.getItems().remove(indice);
-            }
+            Parent attVeiculo = FXMLLoader.load(getClass().getResource("/view/AttVeiculo.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(attVeiculo));
+            stage.setTitle("Atualizar Veículo");
+            stage.show();
+            principal = stage;
+            veiculo = tableVeiculos.getSelectionModel().getSelectedItem();
         }
+        refreshVeiculos();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-            refreshVeiculos();
+        refreshVeiculos();
 
-            colunaIdVeiculo.setCellValueFactory(new PropertyValueFactory<Veiculo, Integer>("idVeiculo"));
-            colunaModelo.setCellValueFactory(new PropertyValueFactory<Veiculo, String>("modelo"));
-            colunaPlaca.setCellValueFactory(new PropertyValueFactory<Veiculo, String>("placa"));
-            colunaAluguel.setCellValueFactory(new PropertyValueFactory<Veiculo, Double>("valorAluguel"));
-            colunaVenda.setCellValueFactory(new PropertyValueFactory<Veiculo, Double>("valorVenda"));
-            colunaKm.setCellValueFactory(new PropertyValueFactory<Veiculo, Double>("kmRodados"));
-            colunaTipo.setCellValueFactory(new PropertyValueFactory<Veiculo, String>("tipo"));
-            colunaAnoVeiculo.setCellValueFactory(new PropertyValueFactory<Veiculo, Integer>("ano"));
+        colunaIdVeiculo.setCellValueFactory(new PropertyValueFactory<Veiculo, Integer>("idVeiculo"));
+        colunaModelo.setCellValueFactory(new PropertyValueFactory<Veiculo, String>("modelo"));
+        colunaPlaca.setCellValueFactory(new PropertyValueFactory<Veiculo, String>("placa"));
+        colunaAluguel.setCellValueFactory(new PropertyValueFactory<Veiculo, Double>("valorAluguel"));
+        colunaVenda.setCellValueFactory(new PropertyValueFactory<Veiculo, Double>("valorVenda"));
+        colunaKm.setCellValueFactory(new PropertyValueFactory<Veiculo, Double>("kmRodados"));
+        colunaTipo.setCellValueFactory(new PropertyValueFactory<Veiculo, String>("tipo"));
+        colunaAnoVeiculo.setCellValueFactory(new PropertyValueFactory<Veiculo, Integer>("ano"));
     }
 
     private void refreshVeiculos(){

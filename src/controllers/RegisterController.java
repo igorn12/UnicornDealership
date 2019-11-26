@@ -1,7 +1,6 @@
 package controllers;
 
 import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,10 +28,7 @@ public class RegisterController implements Initializable {
     private ImageView vehicleIcon;
 
     @FXML
-    private JFXTextField kmRodados, placa, anoVeiculo, valorAluguel, valorVenda, modelo;
-
-    @FXML
-    private JFXTextArea descricao;
+    private JFXTextField kmRodados, placa, anoVeiculo, valorAluguel, valorVenda, modelo, descricao;
 
     @FXML
     private JFXComboBox<TIPO> cbTipo;
@@ -58,7 +54,7 @@ public class RegisterController implements Initializable {
     private void txField(){
         if(cbQualidade.getSelectionModel().getSelectedItem().equals(QUALIDADE.SEMINOVO)){
             kmRodados.setVisible(true);
-        }else{
+        }else if (cbQualidade.getSelectionModel().getSelectedItem().equals(QUALIDADE.NOVO)){
             kmRodados.setVisible(false);
         }
     }
@@ -99,15 +95,16 @@ public class RegisterController implements Initializable {
             aluguel = Double.valueOf(valorAluguel.getText());
             venda = Double.valueOf(valorVenda.getText());
             String tipo = String.valueOf(cbTipo.getSelectionModel().getSelectedItem());
+            String desc = descricao.getText();
             if(cbQualidade.getSelectionModel().getSelectedItem().equals(QUALIDADE.NOVO)) {
                 kms = 0.0;
             }else{
                 kms = Double.valueOf(kmRodados.getText());
             }
-            Veiculo v = new Veiculo(ano,tipo,modelo.getText(),placa.getText(), descricao.getText(), kms, venda,aluguel);
+            Veiculo v = new Veiculo(ano,tipo,modelo.getText(),placa.getText(), desc, kms, venda,aluguel);
             veiculoDAO.insertVeiculo(v);
-            limparCampos();
         }
+        limparCampos();
     }
 
     @FXML
