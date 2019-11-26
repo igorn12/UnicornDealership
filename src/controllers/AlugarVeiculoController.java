@@ -45,27 +45,49 @@ public class AlugarVeiculoController implements Initializable {
     private Label labelConfirm;
 
 
-//    private void refreshClientes(){
-//        clientes.clear();
-//        clientes.addAll(clienteDAO.listNomeCliente());
-//        cbClientes.getItems().setAll(clientes);
-//    }
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        refreshClientes();
+        alimentarCampos();
+        try {
+            verificaCb();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    private void refreshClientes(){
+        clientes.clear();
+        clientes.addAll(clienteDAO.listNomeCliente());
+        cbClientes.getItems().setAll(clientes);
+    }
 
     @FXML
     private void addCliente() throws IOException {
         Parent addCliente = FXMLLoader.load(getClass().getResource("/view/AddCliente.fxml"));
-        Stage stage = new Stage();
-        stage.setTitle("Adicionar Cliente");
-        stage.setScene(new Scene(addCliente));
-        stage.show();
-        principal = stage;
+        principal = new Stage();
+        principal.setTitle("Adicionar Cliente");
+        principal.setScene(new Scene(addCliente));
+        principal.show();
+    }
+
+    @FXML
+    private void alimentarCampos(){
+        String preco = String.valueOf(InicialController.veiculo.getValorAluguel());
+        txPreco.setText(preco);
     }
 
     @FXML
     private void back() throws IOException{
         Parent voltar = FXMLLoader.load(getClass().getResource("/view/Inicial.fxml"));
         Principal.principalStage.setScene(new Scene(voltar));
-        principal.close();
+    }
+
+    @FXML
+    private void verificaCb() throws IOException {
+        if(cbClientes.getItems().isEmpty()){
+            addCliente();
+        }
     }
 
     @FXML
@@ -91,18 +113,4 @@ public class AlugarVeiculoController implements Initializable {
         }
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-////        String precoDoAluguel;
-////        precoDoAluguel = String.valueOf(InicialController.veiculo.getValorAluguel());
-////        txPreco.setText(precoDoAluguel);
-//
-//        refreshClientes();
-//        if(cbClientes.getItems().isEmpty()){
-//            try {
-//                addCliente();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-    }
 }

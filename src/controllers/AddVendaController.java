@@ -35,8 +35,19 @@ public class AddVendaController implements Initializable {
     @FXML
     private Label labelAno, labelModelo, labelPlaca, labelDescricao, labelPreco, labelKm;
 
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        alimentarCampos();
+        refreshVendedores();
+        try {
+            verificaCb();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void refreshVendedores(){
-        vendedores.clear();
         vendedores.setAll(vendedorDAO.listNomeVendedor());
         cbVendedores.getItems().setAll(vendedores);
     }
@@ -59,41 +70,46 @@ public class AddVendaController implements Initializable {
 
     @FXML
     private void addVendedor() throws IOException{
-        Parent addVendedor = FXMLLoader.load(getClass().getResource("/view/AddVendedor.fxml"));
-        Stage stage = new Stage();
-        stage.setTitle("Adicionar Vendedor");
-        stage.setScene(new Scene(addVendedor));
-        stage.show();
-        principal = stage;
+        Parent addVendedor = FXMLLoader.load(getClass().getResource("/view/AddVendedorVendas.fxml"));
+        principal = new Stage();
+        principal.setTitle("Adicionar Vendedor");
+        principal.setScene(new Scene(addVendedor));
+        principal.show();
     }
 
     @FXML
-    private void back()throws IOException {
+    private void voltar()throws IOException {
         Parent voltar = FXMLLoader.load(getClass().getResource("/view/Inicial.fxml"));
         Principal.principalStage.setScene(new Scene(voltar));
         principal.close();
     }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        /*String preco = String.valueOf(InicialController.veiculo.getValorVenda());
-        String ano = String.valueOf(InicialController.veiculo.getAno());
-        String km = String.valueOf(InicialController.veiculo.getKmRodados());
-
-        labelModelo.setText(InicialController.veiculo.getModelo());
-        labelPlaca.setText(InicialController.veiculo.getPlaca());
-        labelPreco.setText(preco);
-        labelAno.setText(ano);
-        labelKm.setText(km);
-        labelDescricao.setText(InicialController.veiculo.getDescricao());
-        */
-        refreshVendedores();
-        if(cbVendedores.getSelectionModel().isEmpty()){
-            try {
-                addVendedor();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+    private void verificaCb() throws IOException {
+        if(cbVendedores.getItems().isEmpty()){
+            addVendedor();
         }
     }
+
+    private void alimentarCampos(){
+        labelModelo.setVisible(true);
+        labelModelo.setText(InicialController.veiculo.getModelo());
+
+        labelPlaca.setVisible(true);
+        labelPlaca.setText(InicialController.veiculo.getPlaca());
+
+        labelPreco.setVisible(true);
+        String preco = String.valueOf(InicialController.veiculo.getValorVenda());
+        labelPreco.setText(preco);
+
+        labelAno.setVisible(true);
+        String ano = String.valueOf(InicialController.veiculo.getAno());
+        labelAno.setText(ano);
+
+        labelKm.setVisible(true);
+        String km = String.valueOf(InicialController.veiculo.getKmRodados());
+        labelKm.setText(km);
+
+        labelDescricao.setVisible(true);
+        labelDescricao.setText(InicialController.veiculo.getDescricao());
+    }
+
 }

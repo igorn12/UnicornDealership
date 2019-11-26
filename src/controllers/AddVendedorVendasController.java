@@ -1,5 +1,6 @@
 package controllers;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +16,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class AddVendedorController implements Initializable {
+public class AddVendedorVendasController implements Initializable {
     private VendedorDAO vendedorDAO = new VendedorDAO();
 
     @FXML
@@ -55,6 +56,7 @@ public class AddVendedorController implements Initializable {
                     alert.setContentText("Esse vendedor já está cadastrado");
 
                     alert.showAndWait();
+                    VendedoresController.vendedor.close();
                 }
             }
         }
@@ -69,10 +71,10 @@ public class AddVendedorController implements Initializable {
     }
 
     @FXML
-    private void back() throws IOException {
-        Parent voltar = FXMLLoader.load(getClass().getResource("/view/Vendedores.fxml"));
+    private void voltar() throws IOException {
+        Parent voltar = FXMLLoader.load(getClass().getResource("/view/AddVenda.fxml"));
         Principal.principalStage.setScene(new Scene(voltar));
-        VendedoresController.vendedor.close();
+        AddVendaController.principal.close();
     }
 
     @Override

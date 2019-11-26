@@ -10,18 +10,18 @@ import javafx.scene.control.Alert;
 import main.Principal;
 import model.Cliente;
 import persistence.ClienteDAO;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class AddClienteController implements Initializable{
+public class AddClienteAluguelController implements Initializable {
     private ClienteDAO clienteDAO = new ClienteDAO();
 
     @FXML
     private JFXTextField nomeCliente, cpfCliente, emailCliente, telCliente;
-
     @FXML
-    public void addCliente(){
+    private void addCliente(){
         if(nomeCliente.getText().isEmpty() || cpfCliente.getText().isEmpty() ||
                 emailCliente.getText().isEmpty() || telCliente.getText().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -46,11 +46,10 @@ public class AddClienteController implements Initializable{
 
     @FXML
     private void voltar() throws IOException {
-        Parent voltar = FXMLLoader.load(getClass().getResource("/view/AluguelVeiculo.fxml"));
+        Parent voltar = FXMLLoader.load(getClass().getResource("/view/AddAluguel.fxml"));
         Principal.principalStage.setScene(new Scene(voltar));
         AlugarVeiculoController.principal.close();
     }
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

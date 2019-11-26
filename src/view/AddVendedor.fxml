@@ -64,7 +64,7 @@
             </JFXButton>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="6">
                <children>
-                  <JFXButton layoutX="13.0" layoutY="-3.0" onAction="#voltar" prefHeight="34.0" prefWidth="75.0" style="-fx-background-color: cyan;" text="Voltar" />
+                  <JFXButton layoutX="13.0" layoutY="-3.0" onAction="#back" prefHeight="34.0" prefWidth="75.0" style="-fx-background-color: cyan;" text="Voltar" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">

@@ -104,12 +104,12 @@ public class VendedorDAO {
 
             while (rs.next()) {
                 Vendedor v = new Vendedor(rs.getString("NOME_VENDEDOR"));
+                lista.add(v);
             }
             con.desconecta();
         } catch (SQLException sqle) {
             System.out.println(sqle.getMessage());
         }
-
         Collections.sort(lista);
         return lista;
     }

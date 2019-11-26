@@ -76,7 +76,7 @@
                   <JFXButton layoutY="12.0" onAction="#back" prefHeight="38.0" prefWidth="81.0" style="-fx-background-color: cyan;" text="Voltar" />
                </children>
             </AnchorPane>
-            <Label fx:id="labelConfirm" alignment="CENTER" prefHeight="17.0" prefWidth="221.0" text="Aluguel adicionado com SUCESSO !!" textFill="#09eb05" visible="false" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+            <Label fx:id="labelConfirm" alignment="CENTER" prefHeight="17.0" prefWidth="197.0" text="Aluguel adicionado com SUCESSO !!" textFill="#06e111" visible="false" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="5" />
          </children>
       </GridPane>
    </center>

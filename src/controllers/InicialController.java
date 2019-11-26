@@ -71,17 +71,16 @@ public class InicialController implements Initializable {
 
     @FXML
     private void rentVeiculo() throws IOException {
-        Parent alugarVeiculo = FXMLLoader.load(getClass().getResource("/view/AlugarVeiculo.fxml"));
-        System.out.println(alugarVeiculo);
-        Principal.principalStage.setScene(new Scene(alugarVeiculo));
         veiculo = tableInicio.getSelectionModel().getSelectedItem();
+        Parent alugarVeiculo = FXMLLoader.load(getClass().getResource("/view/AlugarVeiculo.fxml"));
+        Principal.principalStage.setScene(new Scene(alugarVeiculo));
     }
 
     @FXML
     private void sellVeiculo() throws IOException {
+        veiculo = tableInicio.getSelectionModel().getSelectedItem();
         Parent venderVeiculo = FXMLLoader.load(getClass().getResource("/view/AddVenda.fxml"));
         Principal.principalStage.setScene(new Scene(venderVeiculo));
-        veiculo = tableInicio.getSelectionModel().getSelectedItem();
     }
 
     @FXML

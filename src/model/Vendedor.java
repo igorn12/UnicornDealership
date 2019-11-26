@@ -91,6 +91,6 @@ public class Vendedor implements Comparable<Vendedor>{
 
     @Override
     public int compareTo(Vendedor vendedor) {
-        return this.cpfVendedor.compareTo(vendedor.cpfVendedor);
+        return this.nomeVendedor.compareTo(vendedor.nomeVendedor);
     }
 }

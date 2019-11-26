@@ -61,25 +61,25 @@
             </JFXButton>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="5">
                <children>
-                  <JFXButton layoutX="-20.0" layoutY="15.0" onAction="#back" prefHeight="25.0" prefWidth="81.0" style="-fx-background-color: cyan;" text="Voltar" />
+                  <JFXButton layoutX="-20.0" layoutY="15.0" onAction="#voltar" prefHeight="25.0" prefWidth="81.0" style="-fx-background-color: cyan;" text="Voltar" />
                </children>
             </AnchorPane>
             <JFXComboBox fx:id="cbVendedores" prefHeight="25.0" prefWidth="133.0" promptText="Nome do Vendedor" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="3" />
             <JFXButton onAction="#addVendedor" prefHeight="33.0" prefWidth="155.0" style="-fx-background-color: yellow;" text="Adicionar Vendedor" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="3" />
             <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="68.0" text="Modelo:" GridPane.columnIndex="1" />
-            <Label fx:id="labelModelo" prefHeight="17.0" prefWidth="149.0" textFill="#048bf2" GridPane.columnIndex="2" GridPane.columnSpan="2">
+            <Label fx:id="labelModelo" prefHeight="17.0" prefWidth="149.0" textFill="#048bf2" visible="false" GridPane.columnIndex="2" GridPane.columnSpan="2">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
             <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="68.0" text="Placa:" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="143.0" text="Preço do veiculo:" GridPane.columnSpan="2" GridPane.rowIndex="2" />
-            <Label fx:id="labelPlaca" prefHeight="17.0" prefWidth="82.0" textFill="#047beb" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Label fx:id="labelPlaca" prefHeight="17.0" prefWidth="82.0" textFill="#047beb" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="labelPreco" prefHeight="19.0" prefWidth="103.0" textFill="#0874e8" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="2">
+            <Label fx:id="labelPreco" prefHeight="19.0" prefWidth="103.0" textFill="#0874e8" visible="false" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="2">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
@@ -87,17 +87,17 @@
             <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="69.0" text="Ano:" GridPane.columnIndex="4" />
             <Label prefHeight="17.0" prefWidth="75.0" text="Km Rodados:" GridPane.columnIndex="4" GridPane.rowIndex="1" />
             <Label alignment="BOTTOM_RIGHT" prefHeight="17.0" prefWidth="70.0" text="Descrição:" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-            <Label fx:id="labelDescricao" prefHeight="19.0" prefWidth="214.0" textFill="#057ef8" GridPane.columnIndex="5" GridPane.columnSpan="3" GridPane.rowIndex="2">
+            <Label fx:id="labelDescricao" prefHeight="19.0" prefWidth="214.0" textFill="#057ef8" visible="false" GridPane.columnIndex="5" GridPane.columnSpan="3" GridPane.rowIndex="2">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="labelKm" prefHeight="17.0" prefWidth="121.0" textFill="#077eee" GridPane.columnIndex="5" GridPane.rowIndex="1">
+            <Label fx:id="labelKm" prefHeight="17.0" prefWidth="121.0" textFill="#077eee" visible="false" GridPane.columnIndex="5" GridPane.rowIndex="1">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="labelAno" prefHeight="17.0" prefWidth="128.0" textFill="#0883e8" GridPane.columnIndex="5">
+            <Label fx:id="labelAno" prefHeight="17.0" prefWidth="128.0" textFill="#0883e8" visible="false" GridPane.columnIndex="5">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
