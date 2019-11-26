@@ -48,7 +48,7 @@ public class AddClienteController implements Initializable{
     private void voltar() throws IOException {
         Parent voltar = FXMLLoader.load(getClass().getResource("/view/AddAluguel.fxml"));
         Principal.principalStage.setScene(new Scene(voltar));
-        AddAluguelController.stageAluguel.close();
+        AlugarVeiculoController.principal.close();
     }
 
     @Override

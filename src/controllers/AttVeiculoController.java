@@ -32,15 +32,15 @@ public class AttVeiculoController implements Initializable {
     @FXML
     private void attVeiculo(){
         if(cbItem.getSelectionModel().getSelectedItem().equals(Itens.MODELO)){
-            veiculoDAO.updateModelo(txUpdate.getText(), ToManageController.veiculo);
+            veiculoDAO.updateModelo(txUpdate.getText(), GerenciarController.veiculo);
         }else if(cbItem.getSelectionModel().getSelectedItem().equals(Itens.PLACA)){
-            veiculoDAO.updatePlaca(txUpdate.getText(), ToManageController.veiculo);
+            veiculoDAO.updatePlaca(txUpdate.getText(), GerenciarController.veiculo);
         }else if(cbItem.getSelectionModel().getSelectedItem().equals(Itens.ALUGUEL)){
             double aluguel = Double.valueOf(txUpdate.getText());
-            veiculoDAO.updateAluguel(aluguel, ToManageController.veiculo);
+            veiculoDAO.updateAluguel(aluguel, GerenciarController.veiculo);
         }else if(cbItem.getSelectionModel().getSelectedItem().equals(Itens.VENDA)){
             double venda = Double.valueOf(txUpdate.getText());
-            veiculoDAO.updateVenda(venda, ToManageController.veiculo);
+            veiculoDAO.updateVenda(venda, GerenciarController.veiculo);
         }
     }
 
@@ -76,9 +76,9 @@ public class AttVeiculoController implements Initializable {
 
     @FXML
     private void voltar() throws IOException {
-        Parent voltar = FXMLLoader.load(getClass().getResource("/view/ToManage.fxml"));
+        Parent voltar = FXMLLoader.load(getClass().getResource("/view/Gerenciar.fxml"));
         Principal.principalStage.setScene(new Scene(voltar));
-        ToManageController.principal.close();
+        GerenciarController.principal.close();
     }
 
     @Override

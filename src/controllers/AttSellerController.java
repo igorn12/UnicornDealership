@@ -26,20 +26,20 @@ public class AttSellerController implements Initializable {
 
     @FXML
     private void voltar() throws IOException{
-        Parent voltar = FXMLLoader.load(getClass().getResource("/view/Sellers.fxml"));
+        Parent voltar = FXMLLoader.load(getClass().getResource("/view/Vendedores.fxml"));
         Principal.principalStage.setScene(new Scene(voltar));
-        SellersController.vendedor.close();
+        VendedoresController.vendedor.close();
     }
 
     @FXML
     private void updateVendedor(){
         if (cbItens.getSelectionModel().getSelectedItem().equals(Itens.NOME)){
-            vendedorDAO.updateNomeVendedor(txAlteracao.getText(), SellersController.v);
+            vendedorDAO.updateNomeVendedor(txAlteracao.getText(), VendedoresController.v);
         }else if (cbItens.getSelectionModel().getSelectedItem().equals(Itens.SALARIO)){
             double salario = Double.valueOf(txAlteracao.getText());
-            vendedorDAO.updateSalarioVendedor(salario, SellersController.v);
+            vendedorDAO.updateSalarioVendedor(salario, VendedoresController.v);
         }else if(cbItens.getSelectionModel().getSelectedItem().equals(Itens.TELEFONE)){
-            vendedorDAO.updateTelVendedor(txAlteracao.getText(), SellersController.v);
+            vendedorDAO.updateTelVendedor(txAlteracao.getText(), VendedoresController.v);
         }
     }
 

@@ -84,20 +84,24 @@
       </VBox>
    </left>
    <center>
-      <TableView fx:id="tableInicio" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-        <columns>
-          <TableColumn fx:id="colunaModelo" prefWidth="90.0" text="MODELO" />
-          <TableColumn prefWidth="135.0" text="PREÇOS">
-               <columns>
-                  <TableColumn fx:id="colunaAluguel" prefWidth="75.0" text="ALUGUEL" />
-                  <TableColumn fx:id="colunaVenda" prefWidth="75.0" text="VENDA" />
-               </columns>
-            </TableColumn>
-            <TableColumn fx:id="colunaAno" prefWidth="75.0" text="ANO" />
-            <TableColumn fx:id="colunaKm" prefWidth="92.0" text="KM RODADOS" />
-            <TableColumn fx:id="colunaDescricao" prefWidth="247.0" text="DESCRIÇÃO" />
-        </columns>
-      </TableView>
+      <AnchorPane BorderPane.alignment="CENTER">
+         <children>
+            <TableView fx:id="tableInicio" prefHeight="443.0" prefWidth="641.0">
+              <columns>
+                <TableColumn fx:id="colunaModelo" prefWidth="90.0" text="MODELO" />
+                <TableColumn prefWidth="135.0" text="PREÇOS">
+                     <columns>
+                        <TableColumn fx:id="colunaAluguel" prefWidth="75.0" text="ALUGUEL" />
+                        <TableColumn fx:id="colunaVenda" prefWidth="75.0" text="VENDA" />
+                     </columns>
+                  </TableColumn>
+                  <TableColumn fx:id="colunaAno" prefWidth="75.0" text="ANO" />
+                  <TableColumn fx:id="colunaKm" prefWidth="92.0" text="KM RODADOS" />
+                  <TableColumn fx:id="colunaDescricao" prefWidth="247.0" text="DESCRIÇÃO" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
    </center>
    <bottom>
       <HBox prefHeight="46.0" prefWidth="776.0" BorderPane.alignment="CENTER">

@@ -13,6 +13,7 @@ public class VendedorDAO {
 
     private final String INSERTVENDEDOR = "INSERT INTO VENDEDOR(NOME_VENDEDOR, CPF_VENDEDOR, TEL_VENDEDOR, SALARIO) VALUES (?,?,?,?)";
     private final String LISTVENDEDOR = "SELECT NOME_VENDEDOR, CPF_VENDEDOR, TEL_VENDEDOR, SALARIO, TOTAL_VENDAS FROM VENDEDOR";
+    private final String LISTNOMEVENDEDOR = "SELECT NOME_VENDEDOR FROM VENDEDOR";
     private final String UPDATESALARIOVENDEDOR = "UPDATE VENDEDOR SET SALARIO = ? WHERE SALARIO = ?";
     private final String UPDATENOMEVENDEDOR = "UPDATE VENDEDOR SET NOME_VENDEDOR = ? WHERE NOME_VENDEDOR = ?";
     private final String UPDATETELVENDEDOR = "UPDATE VENDEDOR SET TEL_VENDEDOR = ? WHERE TEL_VENDEDOR = ?";
@@ -80,6 +81,29 @@ public class VendedorDAO {
                 Vendedor v = new Vendedor(rs.getString("NOME_VENDEDOR"), rs.getString("CPF_VENDEDOR"),
                         rs.getString("TEL_VENDEDOR"), rs.getDouble("SALARIO"), rs.getInt("TOTAL_VENDAS"));
                 lista.add(v);
+            }
+            con.desconecta();
+        } catch (SQLException sqle) {
+            System.out.println(sqle.getMessage());
+        }
+
+        Collections.sort(lista);
+        return lista;
+    }
+
+    public ArrayList<Vendedor> listNomeVendedor() {
+        ArrayList<Vendedor> lista = new ArrayList<>();
+
+        try {
+            con.conecta();
+            PreparedStatement preparaInstrucao;
+            preparaInstrucao = con.getConexao().prepareStatement(LISTNOMEVENDEDOR);
+
+
+            ResultSet rs = preparaInstrucao.executeQuery();
+
+            while (rs.next()) {
+                Vendedor v = new Vendedor(rs.getString("NOME_VENDEDOR"));
             }
             con.desconecta();
         } catch (SQLException sqle) {

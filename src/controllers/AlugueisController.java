@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class RentalsController implements Initializable {
+public class AlugueisController implements Initializable {
     private AluguelDAO aluguelDAO = new AluguelDAO();
 
     private ObservableList<Aluguel> alugueis = FXCollections.observableArrayList();

@@ -21,7 +21,7 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class ToManageController implements Initializable {
+public class GerenciarController implements Initializable {
     public static Veiculo veiculo;
     private VeiculoDAO veiculoDAO = new VeiculoDAO();
 

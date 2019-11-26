@@ -1,13 +1,27 @@
 package model;
 
+import java.sql.Date;
+import java.text.DateFormat;
+
 public class Aluguel {
     private int idAluguel;
     private int idVeiculo;
     private int idCliente;
+    private String locatario;
+    private double valorAluguel;
+    private Date dtEntrada;
+    private Date dtEntrega;
     private String dataEntrada;
     private String dataDevolucao;
-    private String locatario;
 
+    public Aluguel(int idVeiculo, int idCliente, String locatario, double valorAluguel, Date dtEntrada, Date dtEntrega) {
+        this.idVeiculo = idVeiculo;
+        this.idCliente = idCliente;
+        this.locatario = locatario;
+        this.valorAluguel = valorAluguel;
+        this.dtEntrada = dtEntrada;
+        this.dtEntrega = dtEntrega;
+    }
 
     public Aluguel(int idVeiculo, int idCliente, String dataEntrada, String dataDevolucao, String locatario) {
         this.idVeiculo = idVeiculo;
@@ -28,6 +42,30 @@ public class Aluguel {
         this.dataEntrada = dataEntrada;
         this.dataDevolucao = dataDevolucao;
         this.locatario = locatario;
+    }
+
+    public double getValorAluguel() {
+        return valorAluguel;
+    }
+
+    public void setValorAluguel(double valorAluguel) {
+        this.valorAluguel = valorAluguel;
+    }
+
+    public Date getDtEntrada() {
+        return dtEntrada;
+    }
+
+    public void setDtEntrada(Date dtEntrada) {
+        this.dtEntrada = dtEntrada;
+    }
+
+    public Date getDtEntrega() {
+        return dtEntrega;
+    }
+
+    public void setDtEntrega(Date dtEntrega) {
+        this.dtEntrega = dtEntrega;
     }
 
     public int getIdVeiculo() {

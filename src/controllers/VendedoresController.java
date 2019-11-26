@@ -22,7 +22,7 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class SellersController implements Initializable {
+public class VendedoresController implements Initializable {
     public static Vendedor v;
 
     private VendedorDAO vendedorDAO = new VendedorDAO();
@@ -69,7 +69,7 @@ public class SellersController implements Initializable {
 
     @FXML
     private void addSeller() throws Exception{
-         Parent addSeller = FXMLLoader.load(getClass().getResource("/view/AddSeller.fxml"));
+         Parent addSeller = FXMLLoader.load(getClass().getResource("/view/AddVendedor.fxml"));
          Stage stage = new Stage();
          stage.setScene(new Scene(addSeller));
          stage.setTitle("Adicionar Vendedor");
@@ -87,7 +87,7 @@ public class SellersController implements Initializable {
             alert.setContentText("Escolha um Vendedor para remover");
             alert.showAndWait();
         } else {
-            Parent attSeller = FXMLLoader.load(getClass().getResource("/view/AttSeller.fxml"));
+            Parent attSeller = FXMLLoader.load(getClass().getResource("/view/AttVendedor.fxml"));
             Stage stage = new Stage();
             stage.setScene(new Scene(attSeller));
             stage.setTitle("Atualizar Vendedor");

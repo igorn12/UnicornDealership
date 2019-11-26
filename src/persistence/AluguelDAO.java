@@ -1,8 +1,6 @@
 package persistence;
 
 import model.Aluguel;
-import model.Cliente;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,9 +9,9 @@ import java.util.ArrayList;
 public class AluguelDAO {
     Conection con = new Conection();
 
-    private final String INSERTALUGUEL = "INSERT INTO ALUGUEL (ID_VEICULO, ID_CLIENTE, DATA_ALUGUEL, DATA_DEVOLUCAO, LOCATARIO) VALUES (?,?,?,?,?)";
+    private final String INSERTALUGUEL = "INSERT INTO ALUGUEL (ID_VEICULO, ID_CLIENTE, LOCATARIO, VALOR_ALUGUEL, DATA_ALUGUEL, DATA_DEVOLUCAO) VALUES (?,?,?,?,?,?)";
     private final String LISTALUGUEL = "SELECT ID_VEICULO, DATA_ALUGUEL, DATA_DEVOLUCAO, LOCATARIO FROM ALUGUEL WHERE ALUGUEL.ID_VEICULO = VEICULO.ID_VEICULO";
-
+    private final String VALIDAALUGUEL = "SELECT COUNT(LOCATARIO) FROM VENDEDOR WHERE UPPER(LOCATARIO) = ?";
 
     public boolean insertAluguel(Aluguel a){
         try{
@@ -24,8 +22,10 @@ public class AluguelDAO {
 
             preparaInstrucao.setInt(1, a.getIdVeiculo());
             preparaInstrucao.setInt(2, a.getIdCliente());
-            preparaInstrucao.setString(3, a.getDataEntrada());
-            preparaInstrucao.setString(4, a.getDataDevolucao());
+            preparaInstrucao.setString(3, a.getLocatario().toUpperCase());
+            preparaInstrucao.setDouble(4, a.getValorAluguel());
+            preparaInstrucao.setDate(5, a.getDtEntrada());
+            preparaInstrucao.setDate(6, a.getDtEntrega());
 
             con.desconecta();
             return true;
@@ -44,8 +44,8 @@ public class AluguelDAO {
             ResultSet rs = preparaInstrucao.executeQuery();
 
             while (rs.next()) {
-                Aluguel a = new Aluguel(rs.getInt("ID_VEICULO"), rs.getInt("ID_CLIENTE"), rs.getString("DATA_ALUGUEL"),
-                        rs.getString("DATA_DEVOLUCAO"), rs.getString("LOCATARIO"));
+                Aluguel a = new Aluguel(rs.getInt("ID_VEICULO"), rs.getInt("ID_CLIENTE"), rs.getString("LOCATARIO"),
+                        rs.getDouble("VALOR_ALUGUEL"), rs.getDate("DATA_ALUGUEL"), rs.getDate("DATA_DEVOLUCAO"));
                 lista.add(a);
             }
             con.desconecta();
@@ -53,5 +53,25 @@ public class AluguelDAO {
             System.out.println(sqle.getMessage());
         }
         return lista;
+    }
+
+    public boolean validaAluguel(Aluguel a){
+        int qtd=0;
+        try {
+            con.conecta();
+            PreparedStatement preparaInstrucao;
+            preparaInstrucao = con.getConexao().prepareStatement(VALIDAALUGUEL);
+
+            preparaInstrucao.setString(1, a.getLocatario().toUpperCase());
+
+            ResultSet rs = preparaInstrucao.executeQuery();
+
+            if(rs.next())
+                qtd = rs.getInt(1);
+
+            con.desconecta();
+        } catch (SQLException e) {
+        }
+        return qtd == 0;
     }
 }

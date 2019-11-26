@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class AddSellerController implements Initializable {
+public class AddVendedorController implements Initializable {
     private VendedorDAO vendedorDAO = new VendedorDAO();
 
     @FXML
@@ -70,9 +70,9 @@ public class AddSellerController implements Initializable {
 
     @FXML
     private void voltar() throws IOException {
-        Parent voltar = FXMLLoader.load(getClass().getResource("/view/Sellers.fxml"));
+        Parent voltar = FXMLLoader.load(getClass().getResource("/view/Vendedores.fxml"));
         Principal.principalStage.setScene(new Scene(voltar));
-        SellersController.vendedor.close();
+        VendedoresController.vendedor.close();
     }
 
     @Override

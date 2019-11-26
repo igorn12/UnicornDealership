@@ -25,8 +25,6 @@ public class InicialController implements Initializable {
 
     private ObservableList<Veiculo> veiculos = FXCollections.observableArrayList();
 
-    @FXML
-    public static Stage principal;
 
     @FXML
     private TableView<Veiculo> tableInicio;
@@ -52,28 +50,38 @@ public class InicialController implements Initializable {
 
     @FXML
     private void register() throws IOException{
-        Parent register = FXMLLoader.load(getClass().getResource("/view/Register.fxml"));
+        Parent register = FXMLLoader.load(getClass().getResource("/view/Registrar.fxml"));
         Principal.principalStage.setScene(new Scene(register));
     }
     @FXML
     private void toManage() throws IOException {
-        Parent remove = FXMLLoader.load(getClass().getResource("/view/toManage.fxml"));
+        Parent remove = FXMLLoader.load(getClass().getResource("/view/Gerenciar.fxml"));
         Principal.principalStage.setScene(new Scene(remove));
     }
     @FXML
     private void sellers() throws IOException{
-        Parent sell = FXMLLoader.load(getClass().getResource("/view/Sellers.fxml"));
+        Parent sell = FXMLLoader.load(getClass().getResource("/view/Vendedores.fxml"));
         Principal.principalStage.setScene(new Scene(sell));
     }
     @FXML
     private void rentals() throws IOException{
-        Parent rentals = FXMLLoader.load(getClass().getResource("/view/Rentals.fxml"));
+        Parent rentals = FXMLLoader.load(getClass().getResource("/view/Alugueis.fxml"));
         Principal.principalStage.setScene(new Scene(rentals));
     }
 
     @FXML
-    private void sellVeiculo(){
-        Parent sellVeiculo = FXMLLoader.load(getClass().getResource("/view/"))
+    private void rentVeiculo() throws IOException {
+        Parent alugarVeiculo = FXMLLoader.load(getClass().getResource("/view/AlugarVeiculo.fxml"));
+        System.out.println(alugarVeiculo);
+        Principal.principalStage.setScene(new Scene(alugarVeiculo));
+        veiculo = tableInicio.getSelectionModel().getSelectedItem();
+    }
+
+    @FXML
+    private void sellVeiculo() throws IOException {
+        Parent venderVeiculo = FXMLLoader.load(getClass().getResource("/view/AddVenda.fxml"));
+        Principal.principalStage.setScene(new Scene(venderVeiculo));
+        veiculo = tableInicio.getSelectionModel().getSelectedItem();
     }
 
     @FXML
@@ -85,17 +93,6 @@ public class InicialController implements Initializable {
         veiculos.clear();
         veiculos.addAll(veiculoDAO.listVeiculo());
         tableInicio.setItems(veiculos);
-    }
-
-    @FXML
-    private void rentVeiculo() throws IOException {
-        veiculo = tableInicio.getSelectionModel().getSelectedItem();
-        Parent addCliente = FXMLLoader.load(getClass().getResource("/view/AddCliente.fxml"));
-        Stage stage = new Stage();
-        stage.setTitle("Clientes");
-        stage.setScene(new Scene(addCliente));
-        stage.show();
-        principal = stage;
     }
 
     @Override

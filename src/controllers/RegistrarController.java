@@ -18,7 +18,7 @@ import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
 
-public class RegisterController implements Initializable {
+public class RegistrarController implements Initializable {
     private VeiculoDAO veiculoDAO = new VeiculoDAO();
 
     private enum TIPO{MOTO, CARRO};
