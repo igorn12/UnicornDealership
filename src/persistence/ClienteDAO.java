@@ -1,8 +1,5 @@
 package persistence;
-
 import model.Cliente;
-
-import java.awt.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,7 +10,7 @@ public class ClienteDAO {
     Conection con = new Conection();
 
     private final String INSERTCLIENTE = "INSERT INTO CLIENTE (NOME_CLIENTE, CPF_CLIENTE, EMAIL, TEL_CLIENTE) VALUES (?,?,?,?)";
-    private final String LISTNOMECLIENTE = "SELECT NOME_CLIENT FROM CLIENTE";
+    private final String LISTNOMECLIENTE = "SELECT NOME_CLIENTE FROM CLIENTE";
     private final String VALIDACLIENTE = "SELECT COUNT(CPF_CLIENTE) FROM CLIENTE WHERE UPPER(CPF_CLIENTE) = ?";
 
     public boolean insertCliente(Cliente c){
