@@ -13,7 +13,7 @@ public class VendasDAO {
 
     private final String INSERTVENDAS = "INSERT INTO VENDAS (ID_VEICULO, RENDIMENTO) VALUES (?,?)";
     private final String LISTRENDIMENTO = "SELECT RENDIMENTO FROM VENDAS";
-    private final String LISTVENDAS = "SELECT ID_VENDAS, ID_VEICULO, RENDIMENTO FROM VENDAS WHERE ";
+    private final String LISTVENDAS = "SELECT ID_VENDAS, ID_VEICULO, RENDIMENTO FROM VENDAS";
 
     public boolean insertVendas(Vendas v){
         try{

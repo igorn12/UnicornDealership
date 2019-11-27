@@ -114,9 +114,10 @@ public class AlugarVeiculoController implements Initializable {
             labelConfirm.setVisible(true);
         }
     }
+
     private void refreshClientes(){
         clientes.clear();
-        clientes.setAll(clienteDAO.listCliente());
+        clientes.addAll(clienteDAO.listNomeCliente());
         cbClientes.getItems().setAll(clientes);
     }
 

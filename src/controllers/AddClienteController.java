@@ -24,6 +24,10 @@ public class AddClienteController implements Initializable{
     @FXML
     private Label labelConfirm;
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
     @FXML
     public void addCliente() {
         if(nomeCliente.getText().isEmpty() || cpfCliente.getText().isEmpty() ||
@@ -65,8 +69,4 @@ public class AddClienteController implements Initializable{
         InicialController.inicial.close();
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-    }
 }

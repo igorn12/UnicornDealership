@@ -10,7 +10,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
-import javafx.stage.Stage;
 import main.Principal;
 import model.Vendas;
 import model.Vendedor;
@@ -23,6 +22,7 @@ import java.util.ResourceBundle;
 public class AddVendaController implements Initializable {
     private VendasDAO vendasDAO = new VendasDAO();
     private VendedorDAO vendedorDAO = new VendedorDAO();
+    private int cont = 0;
 
     private ObservableList<Vendedor> vendedores = FXCollections.observableArrayList();
 
@@ -60,7 +60,8 @@ public class AddVendaController implements Initializable {
         }else{
             Vendas v = new Vendas (InicialController.veiculo.getIdVeiculo(), InicialController.veiculo.getValorVenda());
             v.setRendimento(InicialController.veiculo.getValorVenda());
-            vendedorDAO.updateTotalVendas(+1, cbVendedores.getSelectionModel().getSelectedItem());
+            cont++;
+            vendedorDAO.updateTotalVendas(cont, cbVendedores.getSelectionModel().getSelectedItem());
             vendasDAO.insertVendas(v);
             labelConfirm.setVisible(true);
         }

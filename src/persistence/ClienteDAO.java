@@ -1,6 +1,8 @@
 package persistence;
 
 import model.Cliente;
+
+import java.awt.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,7 +13,7 @@ public class ClienteDAO {
     Conection con = new Conection();
 
     private final String INSERTCLIENTE = "INSERT INTO CLIENTE (NOME_CLIENTE, CPF_CLIENTE, EMAIL, TEL_CLIENTE) VALUES (?,?,?,?)";
-    private final String LISTCLIENTE = "SELECT NOME_CLIENTE, CPF_CLIENTE, EMAIL, TEL_CLIENTE FROM CLIENTE";
+    private final String LISTNOMECLIENTE = "SELECT NOME_CLIENT FROM CLIENTE";
     private final String VALIDACLIENTE = "SELECT COUNT(CPF_CLIENTE) FROM CLIENTE WHERE UPPER(CPF_CLIENTE) = ?";
 
     public boolean insertCliente(Cliente c){
@@ -33,20 +35,18 @@ public class ClienteDAO {
         }
     }
 
-    public ArrayList<Cliente> listCliente(){
+    public ArrayList<Cliente> listNomeCliente(){
         ArrayList<Cliente> lista = new ArrayList<>();
 
         try {
             con.conecta();
             PreparedStatement preparaInstrucao;
-            preparaInstrucao = con.getConexao().prepareStatement(LISTCLIENTE);
+            preparaInstrucao = con.getConexao().prepareStatement(LISTNOMECLIENTE);
 
             ResultSet rs = preparaInstrucao.executeQuery();
 
             while (rs.next()) {
-                Cliente c;
-                c = new Cliente(rs.getString("NOME_CLIENTE"), rs.getString("CPF_CLIENTE"),
-                        rs.getString("EMAIL"), rs.getString("TEL_CLIENTE"));
+                Cliente c = new Cliente(rs.getString("NOME_CLIENTE"));
                 lista.add(c);
             }
 

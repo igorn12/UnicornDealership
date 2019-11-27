@@ -11,7 +11,7 @@ import java.util.Collections;
 public class VendedorDAO {
     private Conection con = new Conection();
 
-    private final String INSERTVENDEDOR = "INSERT INTO VENDEDOR(NOME_VENDEDOR, CPF_VENDEDOR, TEL_VENDEDOR, SALARIO) VALUES (?,?,?,?)";
+    private final String INSERTVENDEDOR = "INSERT INTO VENDEDOR(NOME_VENDEDOR, CPF_VENDEDOR, TEL_VENDEDOR, SALARIO, TOTAL_VENDAS) VALUES (?,?,?,?,0)";
     private final String LISTVENDEDOR = "SELECT NOME_VENDEDOR, CPF_VENDEDOR, TEL_VENDEDOR, SALARIO, TOTAL_VENDAS FROM VENDEDOR";
     private final String LISTNOMEVENDEDOR = "SELECT NOME_VENDEDOR FROM VENDEDOR";
     private final String UPDATESALARIOVENDEDOR = "UPDATE VENDEDOR SET SALARIO = ? WHERE SALARIO = ?";
@@ -176,14 +176,15 @@ public class VendedorDAO {
 
     }
 
-    public boolean updateTotalVendas(int totalVendas, Vendedor v){
+    public boolean updateTotalVendas(int i, Vendedor v){
         try {
             con.conecta();
             PreparedStatement preparaInstrucao;
             preparaInstrucao = con.getConexao().prepareStatement(UPDATETOTALVENDAS);
 
-            preparaInstrucao.setInt(1, totalVendas);
+            preparaInstrucao.setInt(1, i);
             preparaInstrucao.setInt(2, v.getTotalVendas());
+            v.setTotalVendas(i);
 
             preparaInstrucao.execute();
 

@@ -20,6 +20,11 @@ public class AddClienteAluguelController implements Initializable {
     @FXML
     private JFXTextField nomeCliente, cpfCliente, emailCliente, telCliente;
 
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
     @FXML
     private void addCliente(){
         if(nomeCliente.getText().isEmpty() || cpfCliente.getText().isEmpty() ||
@@ -60,8 +65,4 @@ public class AddClienteAluguelController implements Initializable {
         Principal.principalStage.setScene(new Scene(voltar));
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-    }
 }

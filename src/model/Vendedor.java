@@ -49,7 +49,7 @@ public class Vendedor implements Comparable<Vendedor>{
     }
 
     public void setTotalVendas(int totalVendas) {
-        this.totalVendas = totalVendas;
+        this.totalVendas += totalVendas;
     }
 
     public String getNomeVendedor() {
