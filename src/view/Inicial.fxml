@@ -30,7 +30,7 @@
       </AnchorPane>
    </top>
    <left>
-      <VBox prefHeight="443.0" prefWidth="135.0" style="-fx-background-color: lightblue;" BorderPane.alignment="CENTER">
+      <VBox prefHeight="443.0" prefWidth="136.0" style="-fx-background-color: lightblue;" BorderPane.alignment="CENTER">
          <children>
             <JFXButton onAction="#register" prefHeight="54.0" prefWidth="158.0" text="REGISTRAR">
                <graphic>
@@ -80,13 +80,26 @@
                   </ImageView>
                </graphic>
             </JFXButton>
+            <JFXButton onAction="#addCliente" prefHeight="54.0" prefWidth="183.0" text="ADD CLIENTE">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/vendedorIcon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </JFXButton>
+            <JFXButton onAction="#mostrarClientes" prefHeight="56.0" prefWidth="136.0" text="MostrarClientes" />
          </children>
       </VBox>
    </left>
    <center>
       <AnchorPane BorderPane.alignment="CENTER">
          <children>
-            <TableView fx:id="tableInicio" prefHeight="443.0" prefWidth="641.0">
+            <TableView fx:id="tableInicio" layoutX="-1.0" prefHeight="443.0" prefWidth="642.0">
               <columns>
                 <TableColumn fx:id="colunaModelo" prefWidth="90.0" text="MODELO" />
                 <TableColumn prefWidth="135.0" text="PREÇOS">

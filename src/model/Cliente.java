@@ -17,11 +17,11 @@ public class Cliente implements Comparable<Cliente>{
         this.emailCliente = emailCliente;
     }
 
-    public Cliente(String nomeCliente, String cpfCliente, String telCliente, String emailCliente) {
+    public Cliente(String nomeCliente, String cpfCliente, String emailCliente, String telCliente) {
         this.nomeCliente = nomeCliente;
         this.cpfCliente = cpfCliente;
-        this.telCliente = telCliente;
         this.emailCliente = emailCliente;
+        this.telCliente = telCliente;
     }
 
     public Cliente(String nomeCliente, String cpfCliente, String telCliente) {
@@ -90,11 +90,11 @@ public class Cliente implements Comparable<Cliente>{
 
     @Override
     public String toString() {
-        return getNomeCliente();
+        return nomeCliente;
     }
 
     @Override
     public int compareTo(Cliente c) {
-        return this.getNomeCliente().compareTo(c.getNomeCliente());
+        return this.nomeCliente.compareTo(c.nomeCliente);
     }
 }

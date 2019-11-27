@@ -10,7 +10,6 @@ import javafx.scene.control.Alert;
 import main.Principal;
 import model.Cliente;
 import persistence.ClienteDAO;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -20,6 +19,7 @@ public class AddClienteAluguelController implements Initializable {
 
     @FXML
     private JFXTextField nomeCliente, cpfCliente, emailCliente, telCliente;
+
     @FXML
     private void addCliente(){
         if(nomeCliente.getText().isEmpty() || cpfCliente.getText().isEmpty() ||
@@ -31,9 +31,18 @@ public class AddClienteAluguelController implements Initializable {
 
             alert.showAndWait();
         }else{
-            Cliente c = new Cliente(nomeCliente.getText(), cpfCliente.getText(), emailCliente.getText(), telCliente.getText());
-            clienteDAO.insertCliente(c);
-            limparCampos();
+            if(clienteDAO.validaCpfCliente(cpfCliente.getText())){
+                Cliente c = new Cliente(nomeCliente.getText(), cpfCliente.getText(), emailCliente.getText(), telCliente.getText());
+                clienteDAO.insertCliente(c);
+                limparCampos();
+            }else{
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Atenção");
+                alert.setHeaderText("Cliente repetido");
+                alert.setContentText("Esse cliente já está cadastrado");
+
+                alert.showAndWait();
+            }
         }
     }
 
@@ -45,11 +54,12 @@ public class AddClienteAluguelController implements Initializable {
     }
 
     @FXML
-    private void voltar() throws IOException {
-        Parent voltar = FXMLLoader.load(getClass().getResource("/view/AddAluguel.fxml"));
+    private void back() throws IOException {
+        Parent voltar = FXMLLoader.load(getClass().getResource("/view/AlugarVeiculo.fxml"));
+        Principal.principalStage.setTitle("Alugar Veículo");
         Principal.principalStage.setScene(new Scene(voltar));
-        AlugarVeiculoController.principal.close();
     }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

@@ -12,7 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
-import javafx.stage.Stage;
+import javafx.util.StringConverter;
 import main.Principal;
 import model.Aluguel;
 import model.Cliente;
@@ -21,6 +21,8 @@ import persistence.ClienteDAO;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class AlugarVeiculoController implements Initializable {
@@ -30,13 +32,10 @@ public class AlugarVeiculoController implements Initializable {
     private ObservableList<Cliente> clientes = FXCollections.observableArrayList();
 
     @FXML
-    public static Stage principal;
+    private JFXComboBox<Cliente> cbClientes;
 
     @FXML
     private JFXTextField txPreco;
-
-    @FXML
-    private JFXComboBox<Cliente> cbClientes;
 
     @FXML
     private JFXDatePicker dtInicio, dtEntrega;
@@ -47,47 +46,50 @@ public class AlugarVeiculoController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        refreshClientes();
         alimentarCampos();
-        try {
-            verificaCb();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        refreshClientes();
+
+        dtEntrega.setConverter(data());
+        dtInicio.setConverter(data());
     }
-    @FXML
-    private void refreshClientes(){
-        clientes.clear();
-        clientes.addAll(clienteDAO.listNomeCliente());
-        cbClientes.getItems().setAll(clientes);
+
+    private StringConverter<LocalDate> data() {
+        String pattern = "dd/MM/yyyy";
+        StringConverter<LocalDate> converter = new StringConverter<LocalDate>() {
+            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(pattern);
+
+            @Override
+            public String toString(LocalDate date) {
+                if (date != null) {
+                    return dateFormatter.format(date);
+                } else {
+                    return "";
+                }
+            }
+
+            @Override
+            public LocalDate fromString(String string) {
+                if (string != null && !string.isEmpty()) {
+                    return LocalDate.parse(string, dateFormatter);
+                } else {
+                    return null;
+                }
+            }
+        };
+        return converter;
     }
 
     @FXML
     private void addCliente() throws IOException {
-        Parent addCliente = FXMLLoader.load(getClass().getResource("/view/AddCliente.fxml"));
-        principal = new Stage();
-        principal.setTitle("Adicionar Cliente");
-        principal.setScene(new Scene(addCliente));
-        principal.show();
+        Parent addCliente = FXMLLoader.load(getClass().getResource("/view/AddClienteAluguel.fxml"));
+        Principal.principalStage.setTitle("Adicionar Cliente");
+        Principal.principalStage.setScene(new Scene(addCliente));
     }
 
     @FXML
-    private void alimentarCampos(){
-        String preco = String.valueOf(InicialController.veiculo.getValorAluguel());
-        txPreco.setText(preco);
-    }
-
-    @FXML
-    private void back() throws IOException{
+    private void voltar() throws IOException{
         Parent voltar = FXMLLoader.load(getClass().getResource("/view/Inicial.fxml"));
         Principal.principalStage.setScene(new Scene(voltar));
-    }
-
-    @FXML
-    private void verificaCb() throws IOException {
-        if(cbClientes.getItems().isEmpty()){
-            addCliente();
-        }
     }
 
     @FXML
@@ -108,9 +110,19 @@ public class AlugarVeiculoController implements Initializable {
 
             Aluguel a = new Aluguel(idVeiculo, idCliente, nome, valorAluguel, dataEmprestimo, dataDevolucao);
             aluguelDAO.insertAluguel(a);
-            aluguelDAO.validaAluguel(a);
+            aluguelDAO.validaAluguel(a.getLocatario());
             labelConfirm.setVisible(true);
         }
+    }
+    private void refreshClientes(){
+        clientes.clear();
+        clientes.setAll(clienteDAO.listCliente());
+        cbClientes.getItems().setAll(clientes);
+    }
+
+    private void alimentarCampos(){
+        String preco = String.valueOf(InicialController.veiculo.getValorAluguel());
+        txPreco.setText(preco);
     }
 
 }

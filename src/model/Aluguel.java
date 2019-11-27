@@ -23,14 +23,6 @@ public class Aluguel {
         this.dtEntrega = dtEntrega;
     }
 
-    public Aluguel(int idVeiculo, int idCliente, String dataEntrada, String dataDevolucao, String locatario) {
-        this.idVeiculo = idVeiculo;
-        this.idCliente = idCliente;
-        this.dataEntrada = dataEntrada;
-        this.dataDevolucao = dataDevolucao;
-        this.locatario = locatario;
-    }
-
     public Aluguel(int idAluguel, String dataEntrada, String dataDevolucao, String locatario) {
         this.idAluguel = idAluguel;
         this.dataEntrada = dataEntrada;

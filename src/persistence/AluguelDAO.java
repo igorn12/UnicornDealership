@@ -10,7 +10,7 @@ public class AluguelDAO {
     Conection con = new Conection();
 
     private final String INSERTALUGUEL = "INSERT INTO ALUGUEL (ID_VEICULO, ID_CLIENTE, LOCATARIO, VALOR_ALUGUEL, DATA_ALUGUEL, DATA_DEVOLUCAO) VALUES (?,?,?,?,?,?)";
-    private final String LISTALUGUEL = "SELECT ID_VEICULO, DATA_ALUGUEL, DATA_DEVOLUCAO, LOCATARIO FROM ALUGUEL WHERE ALUGUEL.ID_VEICULO = VEICULO.ID_VEICULO";
+    private final String LISTALUGUEL = "SELECT ID_VEICULO, DATA_ALUGUEL, DATA_DEVOLUCAO, LOCATARIO FROM ALUGUEL";
     private final String VALIDAALUGUEL = "SELECT COUNT(LOCATARIO) FROM VENDEDOR WHERE UPPER(LOCATARIO) = ?";
 
     public boolean insertAluguel(Aluguel a){
@@ -55,14 +55,14 @@ public class AluguelDAO {
         return lista;
     }
 
-    public boolean validaAluguel(Aluguel a){
+    public boolean validaAluguel(String locatario){
         int qtd=0;
         try {
             con.conecta();
             PreparedStatement preparaInstrucao;
             preparaInstrucao = con.getConexao().prepareStatement(VALIDAALUGUEL);
 
-            preparaInstrucao.setString(1, a.getLocatario().toUpperCase());
+            preparaInstrucao.setString(1, locatario.toUpperCase());
 
             ResultSet rs = preparaInstrucao.executeQuery();
 

@@ -17,7 +17,7 @@ public class Vendas {
     }
 
     public Vendas(double rendimento) {
-        this.rendimento += rendimento;
+        this.rendimento = rendimento;
     }
 
     public int getIdVendas() {
@@ -43,4 +43,5 @@ public class Vendas {
     public void setIdVeiculo(int idVeiculo) {
         this.idVeiculo = idVeiculo;
     }
+
 }

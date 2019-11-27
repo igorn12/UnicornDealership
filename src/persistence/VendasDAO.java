@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class VendasDAO {
     Conection con = new Conection();
@@ -40,12 +41,12 @@ public class VendasDAO {
         try {
             con.conecta();
             PreparedStatement preparaInstrucao;
-            preparaInstrucao = con.getConexao().prepareStatement(LISTVENDAS);
+            preparaInstrucao = con.getConexao().prepareStatement(LISTRENDIMENTO);
 
             ResultSet rs = preparaInstrucao.executeQuery();
 
             while (rs.next()) {
-                Vendas v = new Vendas(rs.getInt("ID_VENDAS"), rs.getInt("ID_VEICULO"), rs.getDouble("RENDIMENTO"));
+                Vendas v = new Vendas(rs.getDouble("RENDIMENTO"));
                 lista.add(v);
             }
             con.desconecta();

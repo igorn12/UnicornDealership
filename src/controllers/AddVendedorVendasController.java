@@ -26,7 +26,7 @@ public class AddVendedorVendasController implements Initializable {
     private JFXTextField nomeVendedor, cpfVendedor, telVendedor, salarioVendedor;
 
     @FXML
-    private void addVendedor(){
+    private void addVendedor() throws IOException {
         if (nomeVendedor.getText().isEmpty() || cpfVendedor.getText().isEmpty() || salarioVendedor.getText().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Atenção");
@@ -56,7 +56,6 @@ public class AddVendedorVendasController implements Initializable {
                     alert.setContentText("Esse vendedor já está cadastrado");
 
                     alert.showAndWait();
-                    VendedoresController.vendedor.close();
                 }
             }
         }
@@ -74,7 +73,6 @@ public class AddVendedorVendasController implements Initializable {
     private void voltar() throws IOException {
         Parent voltar = FXMLLoader.load(getClass().getResource("/view/AddVenda.fxml"));
         Principal.principalStage.setScene(new Scene(voltar));
-        AddVendaController.principal.close();
     }
 
     @Override

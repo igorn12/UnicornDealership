@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="577.0" prefWidth="776.0" style="-fx-background-color: white;" type="BorderPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AlugarVeiculoController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="577.0" prefWidth="776.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AlugarVeiculoController">
    <top>
       <AnchorPane prefHeight="88.0" prefWidth="776.0" style="-fx-background-color: lightblue;" BorderPane.alignment="CENTER">
          <children>
@@ -73,11 +73,11 @@
             <JFXTextField fx:id="txPreco" labelFloat="true" promptText="Preço por dia:" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="4" />
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="7">
                <children>
-                  <JFXButton layoutY="12.0" onAction="#back" prefHeight="38.0" prefWidth="81.0" style="-fx-background-color: cyan;" text="Voltar" />
+                  <JFXButton layoutY="12.0" onAction="#voltar" prefHeight="38.0" prefWidth="81.0" style="-fx-background-color: cyan;" text="Voltar" />
                </children>
             </AnchorPane>
             <Label fx:id="labelConfirm" alignment="CENTER" prefHeight="17.0" prefWidth="197.0" text="Aluguel adicionado com SUCESSO !!" textFill="#06e111" visible="false" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="5" />
          </children>
       </GridPane>
    </center>
-</fx:root>
+</BorderPane>

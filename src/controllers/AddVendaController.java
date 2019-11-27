@@ -24,9 +24,6 @@ public class AddVendaController implements Initializable {
     private VendasDAO vendasDAO = new VendasDAO();
     private VendedorDAO vendedorDAO = new VendedorDAO();
 
-    @FXML
-    public static Stage principal;
-
     private ObservableList<Vendedor> vendedores = FXCollections.observableArrayList();
 
     @FXML
@@ -35,25 +32,24 @@ public class AddVendaController implements Initializable {
     @FXML
     private Label labelAno, labelModelo, labelPlaca, labelDescricao, labelPreco, labelKm;
 
+    @FXML
+    private Label labelConfirm;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         alimentarCampos();
         refreshVendedores();
-        try {
-            verificaCb();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     private void refreshVendedores(){
+        vendedores.clear();
         vendedores.setAll(vendedorDAO.listNomeVendedor());
         cbVendedores.getItems().setAll(vendedores);
     }
 
     @FXML
-    private void venderVeiculo(){
+    private void venderVeiculo() throws IOException {
         if(cbVendedores.getSelectionModel().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Atenção");
@@ -64,25 +60,25 @@ public class AddVendaController implements Initializable {
         }else{
             Vendas v = new Vendas (InicialController.veiculo.getIdVeiculo(), InicialController.veiculo.getValorVenda());
             v.setRendimento(InicialController.veiculo.getValorVenda());
+            vendedorDAO.updateTotalVendas(+1, cbVendedores.getSelectionModel().getSelectedItem());
             vendasDAO.insertVendas(v);
+            labelConfirm.setVisible(true);
         }
     }
 
     @FXML
-    private void addVendedor() throws IOException{
+    private void addVendedor() throws IOException {
         Parent addVendedor = FXMLLoader.load(getClass().getResource("/view/AddVendedorVendas.fxml"));
-        principal = new Stage();
-        principal.setTitle("Adicionar Vendedor");
-        principal.setScene(new Scene(addVendedor));
-        principal.show();
+        Principal.principalStage.setTitle("Adicionar Vendedor");
+        Principal.principalStage.setScene(new Scene(addVendedor));
     }
 
     @FXML
     private void voltar()throws IOException {
         Parent voltar = FXMLLoader.load(getClass().getResource("/view/Inicial.fxml"));
         Principal.principalStage.setScene(new Scene(voltar));
-        principal.close();
     }
+
     private void verificaCb() throws IOException {
         if(cbVendedores.getItems().isEmpty()){
             addVendedor();
